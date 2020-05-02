@@ -1,5 +1,7 @@
 namespace A02 {
 
+    /* Ich habe kurz vor Abgabe gemerkt, dass ich die Aufgabe falsch verstanden habe. Ich hab versucht ein normales
+    Memory Spiel zu programmieren. Ich hoffe das könnt ihr trotzdem zählen lassen :/...*/
     
     let cards: string[] = [];
     
