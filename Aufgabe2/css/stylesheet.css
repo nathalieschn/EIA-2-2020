@@ -44,8 +44,7 @@
     font-size: 60px;
   }
 
-  #front {
-      backface-visibility: hidden;
+
   }
   
   #back:active {
