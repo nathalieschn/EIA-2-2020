@@ -3,7 +3,7 @@ namespace A02 {
     
     let cards: string[] = [];
     
-    let allCards: string[] = ["hello","Hallo","goodbye","Tschüss","see","sehen","Corona","Corona","München","Munich","bed","Bett","bowl","Schüssel","card","Karte","flower","Blume","country","Land","dog","Hund","love","Liebe","blind","Blind","light","Licht","food","Essen","air","Luft","mood","Stimmung","despair","EIA2","cat","Katze","bird","Vogel","cup","Tasse","bottle","Flasche","dream","Traum","ear","Ohr","space","Weltall","tiger","Tiger"]
+    let allCards: string[] = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25"]
     let y: number;
     let z: number;
     let x: number;
@@ -17,23 +17,37 @@ anzCards();
 
 let anzahlp: string
 function anzPlayer () : void {
-    anzahlp = prompt ("Anzahl der Spieler eingeben");
+    anzahlp = prompt ("Anzahl der Spieler eingeben 1-4");
     z = parseInt(anzahlp); 
 }
 anzPlayer();
 
 function shuffleCards () {
 
-    for (let x: number = 0; x < y; x++) {
+    for (let x: number = 0; x < (y*2); x++) {
         let randomCard = Math.floor((Math.random()*allCards.length));
         cards.push(allCards[randomCard]);
         let prodElement = document.createElement('div');
-            let karte: string= `<p class="${allCards[randomCard]}">${allCards[randomCard]}</p>`
-            prodElement.innerHTML = karte;
-            document.getElementById("memory-card").appendChild(prodElement);            
+            let card: string= `<div class="memory-card" id="front">${allCards[randomCard]}</div>
+            <img class="memory-card" id="back" src="back.jpg"/>`
+            prodElement.innerHTML = card;
+            document.getElementById("memory-game").appendChild(prodElement);            
             allCards.splice(randomCard, 1);
     }
 }
 
+function setPlayer () {
 
+    for (let i: number = 0; i < z; i++) {
+
+        let prodElementPlayer = document.createElement('div');
+            let player: string= `<div class="player">Spieler</div>`
+            prodElementPlayer.innerHTML = player;
+            document.getElementById("player").appendChild(prodElementPlayer);
+    }
 }
+
+shuffleCards();
+setPlayer ();
+
+
