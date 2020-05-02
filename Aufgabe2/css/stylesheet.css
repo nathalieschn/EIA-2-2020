@@ -45,19 +45,15 @@
   }
 
 
-  }
-  
-  #back:active {
+
+ .memory-card {
     transform: scale(0.97);
     transition: transform .2s;
   }
   
 
-.memory-card.flip {
-    transform: rotateY(180deg);
-  }
   
-  #back {
+.memory-card {
     width: 100px;
     height: 100px;
     margin: 5px;
@@ -68,3 +64,15 @@
     box-shadow: 1px 1px 1px rgba(0,0,0,.3);
   }
   
+  #back:active {
+    transform: scale(0.97);
+    transition: transform .2s;
+  }
+
+  #front {
+  visibility: hidden;
+  }
+
+  .visiblecard {
+    visibility: visible;
+  }

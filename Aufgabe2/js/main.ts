@@ -29,7 +29,7 @@ function shuffleCards () {
         cards.push(allCards[randomCard]);
         let prodElement = document.createElement('div');
             let card: string= `<div class="memory-card" id="front">${allCards[randomCard]}</div>
-            <img class="memory-card" id="back" src="back.jpg"/>`
+            <img class="memory-card" id="back" src="back.jpg" onclick="flipCard" />`
             prodElement.innerHTML = card;
             document.getElementById("memory-game").appendChild(prodElement);            
             allCards.splice(randomCard, 1);
@@ -47,7 +47,16 @@ function setPlayer () {
     }
 }
 
+
+
 shuffleCards();
 setPlayer ();
 
+function flipCard() {
+    document.getElementById('front').style.cssText = 'visibility: visible';
+    document.getElementById('back').setAttribute("front","visiblecard");
+    
+}
 
+
+}
