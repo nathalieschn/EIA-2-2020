@@ -2,6 +2,10 @@ namespace A02 {
 
     /* Ich habe kurz vor Abgabe gemerkt, dass ich die Aufgabe falsch verstanden habe. Ich hab versucht ein normales
     Memory Spiel zu programmieren. Ich hoffe das könnt ihr trotzdem zählen lassen :/...*/
+
+    /*Ergänzung zum Kommentar: Evtl. war ich auf der Seite einer anderen Aufgabe. Vielleicht die vom letzten Semester? 
+     Ich bin mir nämlich ziemlich sicher, dass ich mir die Anforderungen, die in meinem Konzept stehen in der Aufgabe
+     gelesen hatte.) */
     
     let cards: string[] = [];
     
