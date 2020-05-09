@@ -53,6 +53,9 @@ main {
 
 }
 
+fieldset {
+    border: none;
+}
 
 
 .categorie {
