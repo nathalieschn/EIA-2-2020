@@ -6,157 +6,107 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>#Stayhome</title>
   <link rel="stylesheet" href="css/stylesheet.css">
+  <script src="js/main.js"></script>
 </head>
 
 <body>
+
+
   <header>
-    <h1>#stayhome and Dont Panic</h1>
+    <h1>#Stayhome and Don't Panic</h1>
   </header>
-  <main>
-
-    <div class="balken">
-      <h2>Shopping Cart</h2>
-      <h2>Total:</h2>
-      <div id="order">
-
-      </div>
-      <form>
-
-        <legend>
-          <h2>Payment</h2>
-        </legend>
-        <p><label for="fullname">Full Name:</label>    </p>
-          <input name="FullName" id="fullname">
-    
-
-        <p> <label for="iban">IBAN:</label> </p>
-        <input name="IBAN" id="iban">
-
-       <p><input type="submit"></p>
-      </form>
+  <div id="bestellung">
+    <h2>Ihre Bestellung</h2>
+    <div id="order">
+      ...
     </div>
-
-    </form>
-
-    <div id="form">
-      <form>
-        <div class="categorie">
-          <h2>SHOPPING</h2>
-          <legend>
-            <h3>Which items do you need?</h3>
-          </legend>
-
-          <fieldset class="items">
-            <input type="checkbox" name="Shoppinglist" id="toiletp" value="Toilet Paper" price="0.75">
-            <label for="toiletp">Toilet Paper</label>
-            <input type="number" name="ItemAnz" id="toiletanz" value="Anzahl Toilet Paper">
-            <label for="toiletanz">Rollen</label>
-          </fieldset>
-
-          <fieldset class="items">
-            <input type="checkbox" name="Shoppinglist" id="spaghetti" value="Spaghetti" price="1.50">
-            <label for="spaghetti">Spaghetti</label>
-            <input type="number" name="ItemAnz" id="spaghettianz" value="Anzahl Spaghetti">
-            <label for="spaghettianz">Gramm</label>
-          </fieldset>
-
-          <fieldset class="items">
-            <input type="checkbox" name="Shoppinglist" id="milk" value="Milk" price="1.99">
-            <label for="milk">Milk</label>
-            <input type="number" name="ItemAnz" id="milkanz" value="Anzahl Milk">
-            <label for="milkanz">Liter</label>
-          </fieldset>
-
-          <legend>
-            <h3>The shop of your choice?</h3>
-          </legend>
-          <fieldset>
-            <input type="radio" name="Favourite Shop" id="target" value="Target" checked>
-            <label for="target">Target</label>
-            <input type="radio" name="Favourite Shop" id="walmart" value="Walmart">
-            <label for="walmart">Walmart</label>
-            <input type="radio" name="Favourite Shop" id="wholefoods" value="Wholefoods">
-            <label for="wholefoods">Wholefoods</label>
-          </fieldset>
-
-        </div>
-
-        <div class="categorie">
-          <h2>Our Services</h2>
-          <legend>
-            <h3>Which items do you need?</h3>
-          </legend>
-
-          <fieldset class="services">
-            <input type="checkbox" name="Service" id="cleaning" value="Cleaning" price="150">
-            <label for="cleaning">House Cleaning</label>
-            <input type="number" name="time" id="cleaningtime" value="Cleaning Time">
-            <label for="cleaningtime">Hours</label>
-          </fieldset>
-
-          <fieldset class="services">
-            <input type="checkbox" name="Service" id="gardening" value="Gardening" price="200">
-            <label for="gardening">Gardening</label>
-            <input type="number" name="time" id="gardeningtime" value="Gardening Time">
-            <label for="gardeningtime">Hours</label>
-          </fieldset>
-
-          <fieldset class="services">
-            <input type="checkbox" name="Service" id="cooking" value="Cooking" price="250">
-            <label for="cooking">Cooking</label>
-            <input type="number" name="time" id="cookingtime" value="Cooking Time">
-            <label for="cookingtime">Hours</label>
-          </fieldset>
-
-        </div>
-
-        <div class="categorie">
-          <h2>Money, Money, Money </h2>
-          <legend>
-            <h3>U shure you should trust this website?</h3>
-          </legend>
-          <fieldset>
-            <select id="moneyopt" name="Bank">
-              <option value="withdraw">Withdraw</option>
-              <option value="deposit">Deposit</option>
-            </select>
-          </fieldset>
-          <fieldset>
-            <input type="number" name="Bank" id="bankmoney" min="50">
-            <label for="bankmoney">$</label>
-          </fieldset>
-
-        <legend>
-          <h3>Tell me more...</h3>
-        </legend>
-        <fieldset>
-          <input type="radio" name="Bank" id="sparkasse" value="Sparkasse" checked>
-          <label for="sparkasse">Sparkasse</label>
-          <input type="radio" name="Bank" id="ingdiba" value="ING Diba">
-          <label for="ingdiba">ING Diba</label>
-          <input type="radio" name="Bank" id="commerz" value="Commerzbank">
-          <label for="commerz">Commerzbank</label>
-        </fieldset>
-    </div>
-
-    <div class="categorie">
-      <p> </p>
-
-      <input type="reset">
-    </div>
-
-
-    </form>
-    </div>
-  </main>
-
-
-
-  <div>
-    <h2></h2>
   </div>
 
-  <script src="js/main.js"></script>
+    <!--<div id="payment">
+      <form>
+        <fieldset>
+          <legend>Full Name</legend>
+          <input type="required" placeholder="Maxi Mustermann">
+
+          <legend>IBAN:</legend>
+          <input type="required" placeholder="DEXX XXXX XXXX XXXX XX"> <br>
+
+          <button id="checkout">Check out!</button>
+        </fieldset>
+
+      </form>
+    </div>-->
+
+
+
+<div id="leftside">
+  <form>
+    <div id="form">
+      <h2>Shopping</h2>
+      <fieldset class="categorie">
+        <legend>Which Items do you need?</legend>
+
+        <input type="checkbox" name="Item" id="shampoo" value="Shampoo" price="4.00" einheit="Bottles">
+        <label for="shampoo">Shampoo</label>
+        <input type="number" name="ShampooMenge" step="1" value="0">
+
+        <input type="checkbox" name="Item" id="flour" value="Flour" price="2.50" einheit="kg">
+        <label for="mehl">Flour</label>
+        <input type="number" name="FlourMenge" step="0.5" value="0">
+
+        <input type="checkbox" name="Item" id="milk" value="Milk" price="2.00" einheit="Liter">
+        <label for="milk">Milk</label>
+        <input type="number" name="MilkMenge" step="1" value="0">
+
+      <legend>Your accustomed shop?</legend>
+        <span>
+          <input type="radio" name="supermarkt" value="Target" id="target">
+          <label for="target">Target</label>
+
+          <input type="radio" name="supermarkt" value="Walmart" id="walmart">
+          <label for="walmart">Walmart</label>
+
+          <input type="radio" name="supermarkt" value="Wholefoods" id="wholefoods">
+          <label for="wholefoods">Wholefoods</label>
+
+        </span>
+      </fieldset>
+
+      <h2 id="service">Our Services</h2>
+      <fieldset class="categorie">
+
+        <legend>Choose your service!</legend>
+
+        <input type="checkbox" name="Service" id="cleaning" value="Cleaning" price="15" einheit="Hours">
+        <label for="cleaning">Cleaning</label>
+        <input type="number" name="CleaningMenge" step="1" value="0">
+
+        <input type="checkbox" name="Service" id="gardening" value="Gardening" price="17" einheit="Hours">
+        <label for="gardening">Flour</label>
+        <input type="number" name="GardeningMenge" step="1" value="0">
+
+        <input type="checkbox" name="Service" id="cooking" value="Cooking" price="23" einheit="Hours">
+        <label for="cooking">Personal Cooking</label>
+        <input type="number" name="cookingMenge" step="1" value="0">
+
+      </fieldset>
+
+      <fieldset class="categorie">
+        <legend>Money</legend>
+        <input type="radio" name="Geld" id="abheben" value="Abheben">
+        <label for="abheben">Abheben</label>
+        <input type="radio" name="Geld" id="einzahlen" value="Einzahlen">
+        <label for="einzahlen">Einzahlen</label> <br> <br>
+        <input type="number" name="Betrag" step="5" min="0" max="500" value="0">
+      </fieldset>
+
+      <input type="reset">
+
+    </div>
+
+  </form>
+</div>
+
 </body>
 
 </html>

@@ -21,7 +21,9 @@ h1 {
 h2 {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 20px;
-    margin-bottom: 0px;
+    margin-bottom: 5px;
+    padding-left: 10px;
+
 
 }
 
@@ -38,7 +40,7 @@ main {
     font-size: 12px;
 }
 
-.balken {
+#bestellung {
     float: right;
     box-shadow: -1px 2px 8px 2px black;
     box-sizing: border-box;
@@ -58,14 +60,19 @@ fieldset {
 }
 
 
-.categorie {
-    box-shadow: -1px 2px 8px 2px black;
-    box-sizing: border-box;
+#leftside {
+    float: left;
+    font-family: Arial, Helvetica, sans-serif;
     margin-top: 7px;
     padding-left: 7px;
     padding-bottom: 7px;
     float: left;
-    width: 70%
+    width: 70%;
+
+}
+
+legend {
+    padding-bottom: 6px;
 }
 
 
