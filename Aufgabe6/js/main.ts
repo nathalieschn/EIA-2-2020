@@ -1,6 +1,7 @@
 namespace Haushaltshilfe {
     window.addEventListener("load", handleLoad);
     let form: HTMLFormElement;
+    let url: string ="http://localhost:5001";
 
    async function handleLoad(): Promise<void> {
         form = <HTMLFormElement>document.querySelector("#form");
@@ -22,8 +23,9 @@ async function sendOrder(_event: Event): Promise<void> {
 console.log("send Order");
 let formData: FormData = new FormData(form);
 let query: URLSearchParams = new URLSearchParams(<any>formData);
-await fetch("index.html?" + query.toString());
-alert ("Order Received!")
+let response: Response = await fetch(url + "?" + query.toString());
+let responseText: string = await response.text();
+alert (responseText);
 }
 
     function handleChange(_event: Event): void {

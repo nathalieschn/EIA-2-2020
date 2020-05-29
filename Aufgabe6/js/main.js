@@ -3,6 +3,7 @@ var Haushaltshilfe;
 (function (Haushaltshilfe) {
     window.addEventListener("load", handleLoad);
     let form;
+    let url = "http://localhost:5001";
     async function handleLoad() {
         form = document.querySelector("#form");
         form.addEventListener("change", handleChange);
@@ -17,8 +18,9 @@ var Haushaltshilfe;
         console.log("send Order");
         let formData = new FormData(form);
         let query = new URLSearchParams(formData);
-        await fetch("index.html?" + query.toString());
-        alert("Order Received!");
+        let response = await fetch(url + "?" + query.toString());
+        let responseText = await response.text();
+        alert(responseText);
     }
     function handleChange(_event) {
         //console.log(_event);

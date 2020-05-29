@@ -2,13 +2,13 @@ namespace Haushaltshilfe {
     
     export function generateContent(_data: Data): void {
 
-        export interface Item {
+        interface Item {
             name: string;
             price: number;
             einheit: string;
         }
     
-        export interface Data  {
+        interface Data  {
             [category: string]: Item[];
         }
     
