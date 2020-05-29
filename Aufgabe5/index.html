@@ -7,8 +7,7 @@
   <title>#Stayhome</title>
   <link rel="stylesheet" href="css/stylesheet.css">
   <script src="js/main.js"></script>
-  <script src="js/Data.ts"></script>
-  <script src="js/CreateContent.ts"></script>
+  <script src="js/GenerateContent.js"></script>
 </head>
 
 <body>
@@ -22,6 +21,8 @@
     <div id="order">
       ...
     </div>
+    <button type="reset" form="form">Reset Order</button>
+    <button type="button" form="form">Check Out</button>
   </div>
 
     <!--<div id="payment">
@@ -42,8 +43,8 @@
 
 
 <div id="leftside">
-  <form>
-    <div id="form">
+  <form  id="form">
+    <div>
       <h2>Shopping</h2>
       <fieldset class="categorie">
         <legend>Which Items do you need?</legend>
@@ -102,7 +103,7 @@
         <input type="number" name="Betrag" step="5" value="0">
       </fieldset>
 
-      <input type="reset">
+
 
     </div>
 
