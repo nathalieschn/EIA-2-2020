@@ -1,13 +1,21 @@
 {
-  "name": "aufgabe6",
+  "name": "haushaltshilfe",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "dependencies": {},
   "devDependencies": {},
   "scripts": {
-    "start": "node /js/main.js"
+    "start": "node /Aufgabe6/server/Server.js"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nathalieschn/EIA-2-2020.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nathalieschn/EIA-2-2020/issues"
+  },
+  "homepage": "https://github.com/nathalieschn/EIA-2-2020#readme"
 }
