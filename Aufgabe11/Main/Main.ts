@@ -1,22 +1,16 @@
-//Abgabe L10 von Alida Kohler kopiert
-namespace L10_Virus {
+//Abgabe kopiert von Alida Kohler
+namespace L11_Virus {
     export let canvas: HTMLCanvasElement;
     export let crc2: CanvasRenderingContext2D;
     export let width: number;
     export let height: number;
-
-    /* let coronas: Corona[] = [];
-    let largeCells: BodyCell[] = [];
-    let particles: Particle[] = [];
-    let smallCells: Background[] = [];
-    let antibodys: Antibody[] = []; */
 
     let cells: Cell[] = [];
 
     let backgroundImage: ImageData;
 
 
-    window.addEventListener("load", createImage);
+    window.addEventListener("load", handleLoad);
     window.addEventListener("resize", handleResize);
 
     function handleResize(): void {
@@ -24,13 +18,36 @@ namespace L10_Virus {
         createImage();
     }
 
+    function handleLoad(): void {
+        alert("Don't let Corona win! To destroy the infected (red) cells, click on them before they can send out more viruses! ");
+        createImage();
+    }
+
     function createImage(): void {
         canvas = <HTMLCanvasElement>document.querySelector("canvas");
         crc2 = <CanvasRenderingContext2D>canvas.getContext("2d");
+        canvas.addEventListener("click", handleClick);
         resizeCanvas();
         createBackground();
         createCells();
-        window.setInterval(animation, 20);
+        window.setInterval(animation, 30);
+    }
+
+    function handleClick(_event: MouseEvent): void {
+        let x: number = _event.clientX;
+        let y: number = _event.clientY;
+
+        for (let cell of cells) {
+            if (cell instanceof BodyCell && cell.status == STATE_BODYCELL.INFECTED) {
+                if (cell.position.x - 40 < x && cell.position.x + 40 > x && cell.position.y - 50 < y && cell.position.y + 50 > y) {
+                    cell.status = STATE_BODYCELL.KILLED;
+                    cell.draw();
+                    window.setTimeout(function (): void {
+                        killBodyCell(cell);
+                    }, 2000)
+                }
+            }
+        }
     }
 
     function createCells(): void {
@@ -54,11 +71,11 @@ namespace L10_Virus {
         if (width > 800) {
             numCircles = numCircles;
             j = Math.floor(width / 50);
-            nParticles = 600;
+            nParticles = 400;
         }
         else {
             numCircles = numCircles / 2;
-            j = 15;
+            j = 10;
             nParticles = 100;
         }
 
@@ -100,12 +117,12 @@ namespace L10_Virus {
             xPos = storage + 40;
             storage = xPos + 40;
             let position: Vector = new Vector(xPos, yPos);
-            let cell: BodyCell = new BodyCell(position, false);
+            let cell: BodyCell = new BodyCell(position);
             cell.draw();
             cells.push(cell);
         }
 
-        for (let i = 0; i < j; i++) {
+        for (let i = 0; i < j/2; i++) {
             radius = 30;
             xPos = coronaPosition + radius + 10;
             coronaPosition = xPos + radius;
@@ -116,7 +133,17 @@ namespace L10_Virus {
                 xPos = xPos - width + 10;
             }
             let position: Vector = new Vector(xPos, yPos);
-            let corona: Corona = new Corona(position);
+            let corona: Corona;
+            let num: number = cells.length - (i + i);
+            let cell: Cell = cells[num];
+            if (cell instanceof BodyCell) {
+                corona = new Corona(position, STATE_CORONA.NORMAL, cell.position);
+            }
+            else {
+                corona = new Corona(position);
+            }
+
+
             corona.draw();
             cells.push(corona);
         }
@@ -138,7 +165,7 @@ namespace L10_Virus {
         crc2.putImageData(backgroundImage, 0, 0);
 
         for (let cell of cells) {
-            if (cell instanceof Antibody || cell instanceof Corona)
+            if (cell instanceof Corona)
                 cell.move(1 / 20);
             else if (cell instanceof BodyCell)
                 cell.move(1 / 30)
@@ -147,27 +174,33 @@ namespace L10_Virus {
             cell.draw();
         }
         isInfected();
-
     }
 
     function isInfected(): void {
-        for (let cell of cells) {
-            if (cell instanceof Corona && cell.isInfected()) {
-                startReaction(cell);
-                changeBodyCell(cell.position.x);
+        for (let unit of cells)
+            switch (unit.type) {
+                case "BodyCell":
+                    let areaMin: number = unit.position.x - 40;
+                    let areaMax: number = unit.position.x + 40;
+                    for (let cell of cells) {
+                        if (cell instanceof Corona && cell.position.x > areaMin && cell.position.x < areaMax && cell.status == STATE_CORONA.NORMAL) {
+                            if (cell.isInfected()) {
+                                startReaction(cell);
+                                changeBodyCell(cell.position.x);
+                            }
+                        }
+                    }
+                    break;
+                default:
+                    break;
             }
-        }
     }
 
     function startReaction(_corona: Corona): void {
-        _corona.isInfecting = true;
+        _corona.status = STATE_CORONA.INFECTING;
         window.setTimeout(function (): void {
-            endReaction(_corona);
+            handleCoronaState(_corona, 1000);
         }, 3000);
-    }
-
-    function endReaction(_corona: Corona) {
-        _corona.isInfecting = false;  
     }
 
     function changeBodyCell(_virusPos: number) {
@@ -175,20 +208,48 @@ namespace L10_Virus {
             let areaMin: number = cell.position.x - 40;
             let areaMax: number = cell.position.x + 40;
 
-            if (cell instanceof BodyCell && _virusPos > areaMin && _virusPos < areaMax) {
-                let index: number = cells.indexOf(cell);
-                cells.splice(index, 1);
-
-                let newPosition: Vector = new Vector(cell.position.x, cell.position.y);
-                let infectedCell: BodyCell = new BodyCell(newPosition, true);
-                infectedCell.draw();
-                for (let cell of cells) {
-                    if(cell instanceof Corona) {
-                        cell.draw();
-                    }
-                }
-                cells.push(infectedCell);
+            if (cell instanceof BodyCell && cell.status != STATE_BODYCELL.KILLED && _virusPos > areaMin && _virusPos < areaMax) {
+                cell.status = STATE_BODYCELL.INFECTED;
+                let bodyCell: BodyCell = cell;
+                window.setTimeout(function (): void {
+                    handleCellState(bodyCell);
+                }, 3000);
             }
+        }
+    }
+
+    function handleCellState(_cell: BodyCell) {
+        if (_cell.status != STATE_BODYCELL.KILLED) {
+            let newCorona: Corona = new Corona(_cell.position, STATE_CORONA.PASSIVE);
+            newCorona.draw();
+            cells.push(newCorona);
+            handleCoronaState(newCorona, 2000);
+            killBodyCell(_cell);
+        }
+    }
+
+    function handleCoronaState(_cell: Corona, _t: number): void {
+        window.setTimeout(function (): void {
+            changeCoronaState(_cell);
+        }, _t);
+    }
+
+    function killBodyCell(_cell: Cell) {
+        let index: number = cells.indexOf(_cell);
+        cells.splice(index, 1);
+    }
+
+    function changeCoronaState(_cell: Corona): void {
+        switch (_cell.status) {
+            case STATE_CORONA.INFECTING:
+                _cell.status = STATE_CORONA.PASSIVE;
+                handleCoronaState(_cell, 1000);
+                break;
+            case STATE_CORONA.PASSIVE:
+                _cell.status = STATE_CORONA.NORMAL;
+                break;
+            default:
+                _cell.status = STATE_CORONA.NORMAL;
         }
     }
 

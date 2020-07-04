@@ -1,9 +1,12 @@
-var L10_Virus;
-(function (L10_Virus) {
+var L11_Virus;
+(function (L11_Virus) {
     class Vector {
         constructor(_x, _y) {
             this.x = _x;
             this.y = _y;
+        }
+        static getDifference(_v0, _v1) {
+            return new Vector(_v0.x - _v1.x, _v0.y - _v1.y);
         }
         set(_x, _y) {
             this.x = _x;
@@ -25,6 +28,6 @@ var L10_Virus;
             this.scale(length);
         }
     }
-    L10_Virus.Vector = Vector;
-})(L10_Virus || (L10_Virus = {}));
+    L11_Virus.Vector = Vector;
+})(L11_Virus || (L11_Virus = {}));
 //# sourceMappingURL=Vector.js.map

@@ -15,34 +15,34 @@ var L10_Virus;
             this.nucleusPosX = this.position.x + 2;
             this.nucleusPosY = this.position.y - 2;
             this.nucleus = "#888888";
-            this.velocity.add(new L10_Virus.Vector(0, 12));
+            this.velocity.add(new Vector(0, 12));
         }
         draw() {
-            L10_Virus.crc2.save();
+            crc2.save();
             let startAngle = (Math.PI / 180);
             let endAngle = (Math.PI / 180) * 360;
             // Create the Cell itself
-            L10_Virus.crc2.beginPath();
-            L10_Virus.crc2.ellipse(this.position.x, this.position.y, 40, 50, 0, startAngle, endAngle);
-            L10_Virus.crc2.closePath();
-            L10_Virus.crc2.strokeStyle = this.color;
-            L10_Virus.crc2.fillStyle = this.color;
-            L10_Virus.crc2.stroke();
-            L10_Virus.crc2.fill();
+            crc2.beginPath();
+            crc2.ellipse(this.position.x, this.position.y, 40, 50, 0, startAngle, endAngle);
+            crc2.closePath();
+            crc2.strokeStyle = this.color;
+            crc2.fillStyle = this.color;
+            crc2.stroke();
+            crc2.fill();
             //Draw Nucleus 
             //They are not perfect circles, to make them look more naturally
-            L10_Virus.crc2.beginPath();
-            L10_Virus.crc2.arc(this.nucleusPosX, this.nucleusPosY, 10, Math.random(), 1.95 * Math.PI);
-            L10_Virus.crc2.fillStyle = this.nucleus + "66";
-            L10_Virus.crc2.closePath();
-            L10_Virus.crc2.fill();
+            crc2.beginPath();
+            crc2.arc(this.nucleusPosX, this.nucleusPosY, 10, Math.random(), 1.95 * Math.PI);
+            crc2.fillStyle = this.nucleus + "66";
+            crc2.closePath();
+            crc2.fill();
         }
         move(_timeslice) {
             super.move(_timeslice);
             if (this.position.y < 72)
-                this.velocity = new L10_Virus.Vector(0, 10);
+                this.velocity = new Vector(0, 10);
             if (this.position.y > 87)
-                this.velocity = new L10_Virus.Vector(0, -10);
+                this.velocity = new Vector(0, -10);
         }
     }
     L10_Virus.BodyCell = BodyCell;

@@ -35,20 +35,20 @@ var L10_Virus;
         pattern.arc(95, 0, 2, 0 * Math.PI, 1 * Math.PI);
         pattern.fillStyle = "#88888844";
         pattern.fill();
-        L10_Virus.crc2.fillStyle = L10_Virus.crc2.createPattern(pattern.canvas, "repeat");
-        L10_Virus.crc2.fillRect(0, 0, L10_Virus.canvas.width, L10_Virus.canvas.height);
+        crc2.fillStyle = crc2.createPattern(pattern.canvas, "repeat");
+        crc2.fillRect(0, 0, canvas.width, canvas.height);
     }
     L10_Virus.createBackground = createBackground;
     function resizeCanvas() {
         //Make the Canvas as big as the screen of the used device 
-        L10_Virus.width = window.innerWidth;
-        L10_Virus.canvas.setAttribute("width", L10_Virus.width + "px");
-        L10_Virus.height = window.innerHeight;
-        L10_Virus.canvas.setAttribute("height", L10_Virus.height + "px");
+        width = window.innerWidth;
+        canvas.setAttribute("width", width + "px");
+        height = window.innerHeight;
+        canvas.setAttribute("height", height + "px");
         //Set a light blue Background-color, fill a rectangle with it 
-        L10_Virus.crc2.fillStyle = "#97a0db33";
+        crc2.fillStyle = "#97a0db33";
         //The rectangle is bigger as the canvas, making sure there are no margins in the background-color
-        L10_Virus.crc2.fillRect(0, 0, L10_Virus.width, L10_Virus.height);
+        crc2.fillRect(0, 0, width, height);
     }
     L10_Virus.resizeCanvas = resizeCanvas;
 })(L10_Virus || (L10_Virus = {}));

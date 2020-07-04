@@ -5,7 +5,7 @@ var L10_Virus;
             super(_position);
         }
         draw() {
-            L10_Virus.crc2.save();
+            crc2.save();
             let colors = ["#fbcde2", "#c57ea2", "#f5aacf", "#fdddec"];
             let nucleusColors = ["#888888", "#373737", "#4a4a4a", "#444444"];
             let numColors = colors.length;
@@ -26,20 +26,20 @@ var L10_Virus;
             pattern.arc(2, 2, Math.floor(Math.random() * 2), 0, 2 * Math.PI);
             pattern.strokeStyle = color + "55";
             pattern.stroke();
-            L10_Virus.crc2.fillStyle = L10_Virus.crc2.createPattern(pattern.canvas, "repeat");
+            crc2.fillStyle = crc2.createPattern(pattern.canvas, "repeat");
             // Create the Cell itself
-            L10_Virus.crc2.beginPath();
-            L10_Virus.crc2.ellipse(this.position.x, this.position.y, radius, radius * Math.random() + radius, rotation, startAngle, endAngle);
-            L10_Virus.crc2.closePath();
-            L10_Virus.crc2.strokeStyle = color + "88";
-            L10_Virus.crc2.fillStyle = pattern;
-            L10_Virus.crc2.stroke();
-            L10_Virus.crc2.fill();
-            L10_Virus.crc2.beginPath();
-            L10_Virus.crc2.arc(this.position.x + 2, this.position.y - 3, 3, Math.random(), 1.7 * Math.PI);
-            L10_Virus.crc2.fillStyle = nucleusColor + "33";
-            L10_Virus.crc2.closePath();
-            L10_Virus.crc2.fill();
+            crc2.beginPath();
+            crc2.ellipse(this.position.x, this.position.y, radius, radius * Math.random() + radius, rotation, startAngle, endAngle);
+            crc2.closePath();
+            crc2.strokeStyle = color + "88";
+            crc2.fillStyle = pattern;
+            crc2.stroke();
+            crc2.fill();
+            crc2.beginPath();
+            crc2.arc(this.position.x + 2, this.position.y - 3, 3, Math.random(), 1.7 * Math.PI);
+            crc2.fillStyle = nucleusColor + "33";
+            crc2.closePath();
+            crc2.fill();
         }
     }
     L10_Virus.Background = Background;
