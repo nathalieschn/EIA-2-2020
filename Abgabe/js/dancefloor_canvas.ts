@@ -4,7 +4,11 @@ namespace dancefloor {
 
     let mainCanvas: HTMLCanvasElement;
 
+    let backgroundColor: HTMLSelectElement;
+
     let deleteForm: boolean
+
+    let backgroundImage: ImageData;
 
     window.addEventListener("load", handleLoad);
 
@@ -12,19 +16,21 @@ namespace dancefloor {
 
         deleteForm = true; 
         let form: HTMLDivElement = <HTMLDivElement>document.querySelector("div#canvasSize");
+        backgroundColor = <HTMLSelectElement>document.querySelector("div#canvasStyle");
 
         
 
         mainCanvas = <HTMLCanvasElement> document.getElementById("mainCanvasDraw"); 
         crc2 = <CanvasRenderingContext2D>mainCanvas.getContext("2d");
 
-        form.addEventListener("change", chooseCanvas); 
+        form.addEventListener("change", chooseSize); 
+
+        backgroundColor.addEventListener("change", chooseBackground);
         
     }
 
-    function chooseCanvas(_event: Event): void {
+    function chooseSize(_event: Event): void {
  
-        console.log("ich wurde geklickt"); 
         let target: HTMLElement = <HTMLElement>_event.target; 
         let id: string = target.id;
         
@@ -52,6 +58,42 @@ namespace dancefloor {
                 break; 
 
         }
+    }
+
+    function chooseBackground (_event: Event): void {
+
+        let target: HTMLSelectElement = <HTMLSelectElement>_event.target; 
+        let id: string = target.id;
+        
+
+        switch (id) {
+            
+            case "style1":
+                crc2.fillStyle = "#C6D1D3"; 
+                crc2.fill(); 
+                crc2.fillRect(0, 0, crc2.canvas.width, crc2.canvas.height); 
+                break;
+
+
+            case "style2":
+                crc2.fillStyle = "21D4EA"; 
+                crc2.fill(); 
+                crc2.fillRect(0, 0, crc2.canvas.width, crc2.canvas.height);      
+                break; 
+
+
+            case "style3":
+                crc2.fillStyle = "361351"; 
+                crc2.fill(); 
+                crc2.fillRect(0, 0, crc2.canvas.width, crc2.canvas.height); 
+                        
+                
+                break; 
+
+        
+
+        }
+
     }
 
 }
