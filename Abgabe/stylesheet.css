@@ -1,0 +1,23 @@
+* {
+    background-color: black;
+    font-family: 'Verdana';
+    color: #d33693;
+    text-transform: uppercase;
+}
+
+#savepic:hover {
+   height: 80px;
+   border-style: ridge;
+   border-color: #d33693;
+}
+
+#mainCanvas {
+    border-style: double;
+    border-color: #3e4a87;
+    float: left;
+}
+
+aside {
+    float: right;
+    margin-right: 200px;
+}
