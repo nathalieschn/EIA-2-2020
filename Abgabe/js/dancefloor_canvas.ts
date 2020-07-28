@@ -4,10 +4,6 @@ namespace dancefloor {
     
 
     let mainCanvas: HTMLCanvasElement;
-
-    let backgroundColor: HTMLSelectElement;
-
-
     let deleteForm: boolean
 
 
@@ -18,7 +14,7 @@ namespace dancefloor {
 
         deleteForm = true; 
         let form: HTMLDivElement = <HTMLDivElement>document.querySelector("div#canvasSize");
-        backgroundColor = <HTMLSelectElement>document.querySelector("div#canvasStyle");
+        let backgroundColor = <HTMLSelectElement>document.querySelector("div#canvasStyle");
 
         
 
@@ -73,23 +69,93 @@ namespace dancefloor {
         switch (id) {
             
             case "style1":
+
                 crc2.fillStyle = "#C6D1D3"; 
                 crc2.fill(); 
                 crc2.fillRect(0, 0, crc2.canvas.width, crc2.canvas.height); 
+
+                crc2.strokeStyle="black"
+                crc2.strokeRect(60,180,90,120);
+                crc2.strokeRect(360,180,90,120);
+
+                crc2.beginPath();
+                crc2.arc(105,210,15,1,5*Math.PI);
+                crc2.arc(105,270,22,1,5*Math.PI);
+                crc2.closePath;
+
+                crc2.fillStyle="black";
+
+                crc2.fill();
+
+                crc2.beginPath();
+                crc2.arc(405,210,15,1,5*Math.PI);
+                crc2.arc(405,270,22,1,5*Math.PI);
+                crc2.closePath;
+
+                crc2.fillStyle="black";
+
+                crc2.fill();
+
                 break;
 
 
             case "style2":
-                crc2.fillStyle = "21D4EA"; 
+                crc2.fillStyle = "#21D4EA"; 
                 crc2.fill(); 
-                crc2.fillRect(0, 0, crc2.canvas.width, crc2.canvas.height);      
+                crc2.fillRect(0, 0, crc2.canvas.width, crc2.canvas.height);   
+                
+                crc2.strokeStyle="black"
+                crc2.strokeRect(60,180,90,120);
+                crc2.strokeRect(360,180,90,120);
+
+                crc2.beginPath();
+                crc2.arc(105,210,15,1,5*Math.PI);
+                crc2.arc(105,270,22,1,5*Math.PI);
+                crc2.closePath;
+
+                crc2.fillStyle="pink";
+
+                crc2.fill();
+
+                crc2.beginPath();
+                crc2.arc(405,210,15,1,5*Math.PI);
+                crc2.arc(405,270,22,1,5*Math.PI);
+                crc2.closePath;
+
+                crc2.fillStyle="yellow";
+
+                crc2.fill();
+
                 break; 
 
 
             case "style3":
-                crc2.fillStyle = "361351"; 
+                crc2.fillStyle = "#361351"; 
                 crc2.fill(); 
                 crc2.fillRect(0, 0, crc2.canvas.width, crc2.canvas.height); 
+
+                crc2.strokeStyle="black"
+                crc2.strokeRect(60,180,90,120);
+                crc2.strokeRect(360,180,90,120);
+
+                crc2.beginPath();
+                crc2.arc(105,210,15,1,5*Math.PI);
+                crc2.arc(105,270,22,1,5*Math.PI);
+                crc2.closePath;
+
+                crc2.fillStyle="black";
+
+                crc2.fill();
+
+                crc2.beginPath();
+                crc2.arc(405,210,15,1,5*Math.PI);
+                crc2.arc(405,270,22,1,5*Math.PI);
+                crc2.closePath;
+
+                crc2.fillStyle="black";
+
+                crc2.fill();
+
                         
                 
                 break; 
