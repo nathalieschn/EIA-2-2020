@@ -3,7 +3,6 @@ var dancefloor;
     let mainCanvas;
     let backgroundColor;
     let deleteForm;
-    let backgroundImage;
     window.addEventListener("load", handleLoad);
     function handleLoad(_event) {
         deleteForm = true;
@@ -27,7 +26,7 @@ var dancefloor;
                 dancefloor.crc2.canvas.height = 350;
                 break;
             case "format3":
-                dancefloor.crc2.canvas.width = 300;
+                dancefloor.crc2.canvas.width = 350;
                 dancefloor.crc2.canvas.height = 350;
                 break;
         }

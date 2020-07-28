@@ -1,14 +1,16 @@
 namespace dancefloor {
 
     export let crc2: CanvasRenderingContext2D;
+    
 
     let mainCanvas: HTMLCanvasElement;
 
     let backgroundColor: HTMLSelectElement;
 
+
     let deleteForm: boolean
 
-    let backgroundImage: ImageData;
+
 
     window.addEventListener("load", handleLoad);
 
@@ -22,6 +24,8 @@ namespace dancefloor {
 
         mainCanvas = <HTMLCanvasElement> document.getElementById("mainCanvasDraw"); 
         crc2 = <CanvasRenderingContext2D>mainCanvas.getContext("2d");
+
+        
 
         form.addEventListener("change", chooseSize); 
 
@@ -51,7 +55,7 @@ namespace dancefloor {
                 
                 break; 
             case "format3":
-                crc2.canvas.width = 300; 
+                crc2.canvas.width = 350; 
                 crc2.canvas.height = 350; 
                
                 
