@@ -2,14 +2,17 @@ var dancefloor;
 (function (dancefloor) {
     let mainCanvas;
     let deleteForm;
+    let deleteButton;
     window.addEventListener("load", handleLoad);
     function handleLoad(_event) {
         deleteForm = true;
         let form = document.querySelector("div#canvasSize");
         let backgroundColor = document.querySelector("div#canvasStyle");
+        let deleteButton = document.getElementById("deletepic");
         mainCanvas = document.getElementById("mainCanvasDraw");
         dancefloor.crc2 = mainCanvas.getContext("2d");
         form.addEventListener("change", chooseSize);
+        deleteButton.addEventListener("click", clearCanvas);
         backgroundColor.addEventListener("change", chooseBackground);
     }
     function chooseSize(_event) {
@@ -95,6 +98,10 @@ var dancefloor;
                 dancefloor.crc2.fill();
                 break;
         }
+    }
+    function clearCanvas() {
+        dancefloor.crc2.clearRect(0, 0, mainCanvas.width, mainCanvas.height);
+        dancefloor.crc2.save();
     }
 })(dancefloor || (dancefloor = {}));
 //# sourceMappingURL=dancefloor_canvas.js.map

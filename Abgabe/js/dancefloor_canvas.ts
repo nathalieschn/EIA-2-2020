@@ -5,6 +5,7 @@ namespace dancefloor {
 
     let mainCanvas: HTMLCanvasElement;
     let deleteForm: boolean
+    let deleteButton: HTMLButtonElement;
 
 
 
@@ -16,6 +17,8 @@ namespace dancefloor {
         let form: HTMLDivElement = <HTMLDivElement>document.querySelector("div#canvasSize");
         let backgroundColor = <HTMLSelectElement>document.querySelector("div#canvasStyle");
 
+        let deleteButton = <HTMLButtonElement>document.getElementById("deletepic");
+
         
 
         mainCanvas = <HTMLCanvasElement> document.getElementById("mainCanvasDraw"); 
@@ -24,6 +27,8 @@ namespace dancefloor {
         
 
         form.addEventListener("change", chooseSize); 
+
+        deleteButton.addEventListener("click", clearCanvas);
 
         backgroundColor.addEventListener("change", chooseBackground);
         
@@ -165,5 +170,16 @@ namespace dancefloor {
         }
 
     }
+
+    function clearCanvas(): void {
+
+        crc2.clearRect(0, 0, mainCanvas.width, mainCanvas.height);   
+        crc2.save(); 
+        
+        
+ 
+           
+     }
+ 
 
 }
