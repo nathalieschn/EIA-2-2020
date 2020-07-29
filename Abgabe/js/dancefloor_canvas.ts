@@ -270,6 +270,8 @@ namespace dancefloor {
         crc2.lineTo(60, 20);
         crc2.strokeStyle="white";
         crc2.stroke();
+
+        
         
     }
 
