@@ -19,7 +19,7 @@ namespace dancefloor {
         drawLights({x: 30, y: 20});
     }
 
-    function drawLights(_position: Vector) {
+    export function drawLights(_position: Vector) {
         
         crc2.beginPath();
         crc2.arc(20,20,5,1,5*Math.PI);

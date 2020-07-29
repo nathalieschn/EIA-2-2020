@@ -7,6 +7,17 @@ namespace dancefloor {
     let deleteForm: boolean
     let deleteButton: HTMLButtonElement;
 
+    let circleDiv: HTMLDivElement; 
+    let starDiv: HTMLDivElement; 
+    let triangleDiv: HTMLDivElement;
+
+    let crc3: CanvasRenderingContext2D;
+    let crc4: CanvasRenderingContext2D;
+
+    interface Vector {
+        x: number;
+        y: number;
+    }
 
 
     window.addEventListener("load", handleLoad);
@@ -17,12 +28,20 @@ namespace dancefloor {
         let form: HTMLDivElement = <HTMLDivElement>document.querySelector("div#canvasSize");
         let backgroundColor = <HTMLSelectElement>document.querySelector("div#canvasStyle");
 
+        circleDiv = <HTMLDivElement>document.getElementById("lights"); 
+        starDiv = <HTMLDivElement>document.getElementById("confetti"); 
+        triangleDiv = <HTMLDivElement>document.getElementById("discoball"); 
+
+        
+
         let deleteButton = <HTMLButtonElement>document.getElementById("deletepic");
 
         
 
         mainCanvas = <HTMLCanvasElement> document.getElementById("mainCanvasDraw"); 
         crc2 = <CanvasRenderingContext2D>mainCanvas.getContext("2d");
+
+
 
         
 
@@ -31,6 +50,11 @@ namespace dancefloor {
         deleteButton.addEventListener("click", clearCanvas);
 
         backgroundColor.addEventListener("change", chooseBackground);
+
+        circleDiv.addEventListener("click", generateMainCanvas);
+        starDiv.addEventListener("click", generateMainCanvas);
+        triangleDiv.addEventListener("click", generateMainCanvas);
+
         
     }
 
@@ -171,15 +195,125 @@ namespace dancefloor {
 
     }
 
-    function clearCanvas(): void {
+    function clearCanvas(_event:Event): void {
 
         crc2.clearRect(0, 0, mainCanvas.width, mainCanvas.height);   
         crc2.save(); 
-        
-        
  
            
-     }
- 
+    }
 
-}
+    export function generateMainCanvas(_event: MouseEvent): void {
+
+        
+        let target: HTMLElement = <HTMLElement>_event.target; 
+        let id: string = target.id; 
+
+
+        let x: number = 50; 
+        let y: number = 50; 
+        
+
+
+        switch (id) {
+            case "lights":
+                let canvas1: HTMLCanvasElement | null = document.querySelector("canvas#mainCanvasDraw");
+                if (!canvas1)
+                return;
+        
+                crc2 = <CanvasRenderingContext2D>canvas1.getContext("2d");
+
+                lightsInMain();
+                
+                        
+
+                break;
+            case "discoball":
+
+                let canvas2: HTMLCanvasElement | null = document.querySelector("canvas#mainCanvasDraw");
+                if (!canvas2)
+                return;
+        
+                crc4 = <CanvasRenderingContext2D>canvas2.getContext("2d");
+        
+                ballInMain ();
+
+
+                break; 
+
+            case "confetti":
+
+                let canvas3: HTMLCanvasElement | null = document.querySelector("canvas#mainCanvasDraw");
+                if (!canvas3)
+                return;
+        
+                crc3 = <CanvasRenderingContext2D>canvas3.getContext("2d");
+        
+                confettiInMain();
+
+               
+            break;
+
+        }
+    }
+
+    function lightsInMain() {
+        crc2.beginPath();
+        crc2.arc(20,20,5,1,5*Math.PI);
+        crc2.closePath();
+    
+        crc2.moveTo(20, 30);
+        crc2.lineTo(20,55);
+        crc2.moveTo(30, 30);
+        crc2.lineTo(50,50);
+        crc2.moveTo(30,20);
+        crc2.lineTo(60, 20);
+        crc2.strokeStyle="white";
+        crc2.stroke();
+        
+    }
+
+    function ballInMain() {
+        crc4.beginPath();
+        crc4.arc(35,35,20,1,5*Math.PI);
+        crc4.closePath();
+
+        crc4.moveTo(20,25);
+        crc4.lineTo(50,25);
+        crc4.moveTo(15,35);
+        crc4.lineTo(55,35);
+        crc4.moveTo(20,45);
+        crc4.lineTo(50,45);
+
+        crc4.moveTo(25,20);
+        crc4.lineTo(25,50);
+        crc4.moveTo(35,15);
+        crc4.lineTo(35,55);
+        crc4.moveTo(45,20);
+        crc4.lineTo(45,50);
+
+        
+
+        
+
+        crc4.strokeStyle="black";
+
+        crc4.fillStyle="silver";
+        crc4.fill();
+        crc4.stroke();
+    }
+
+    function confettiInMain(){
+
+        crc3.rect(10,10,10,5);
+        crc3.rect(40,15,10,5);
+        crc3.rect(15,30,10,5);
+        crc3.rect(45,40,10,5);
+        crc3.rect(5,50,10,5);
+
+        crc3.fillStyle="silver";
+        crc3.fill();
+    }
+
+    }
+ 

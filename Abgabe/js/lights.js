@@ -22,5 +22,6 @@ var dancefloor;
         crc2.strokeStyle = "white";
         crc2.stroke();
     }
+    dancefloor.drawLights = drawLights;
 })(dancefloor || (dancefloor = {}));
 //# sourceMappingURL=lights.js.map
