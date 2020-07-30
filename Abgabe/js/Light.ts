@@ -1,9 +1,7 @@
 namespace dancefloor {
 
-    interface Vector {
-        x: number;
-        y: number;
-    }
+
+
 
     window.addEventListener("load", handleLoad);
     let crc2: CanvasRenderingContext2D;
@@ -16,10 +14,10 @@ namespace dancefloor {
 
         crc2 = <CanvasRenderingContext2D>canvas.getContext("2d");
 
-        drawLights({x: 30, y: 20});
+        drawLights();
     }
 
-    export function drawLights(_position: Vector) {
+    export function drawLights() {
         
         crc2.beginPath();
         crc2.arc(20,20,5,1,5*Math.PI);

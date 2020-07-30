@@ -7,9 +7,9 @@ var dancefloor;
         if (!canvas)
             return;
         crc2 = canvas.getContext("2d");
-        drawLights({ x: 30, y: 20 });
+        drawLights();
     }
-    function drawLights(_position) {
+    function drawLights() {
         crc2.beginPath();
         crc2.arc(20, 20, 5, 1, 5 * Math.PI);
         crc2.closePath();
@@ -24,4 +24,4 @@ var dancefloor;
     }
     dancefloor.drawLights = drawLights;
 })(dancefloor || (dancefloor = {}));
-//# sourceMappingURL=lights.js.map
+//# sourceMappingURL=Light.js.map
