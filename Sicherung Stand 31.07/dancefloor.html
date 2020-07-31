@@ -1,0 +1,136 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="stylesheet.css">
+    <script src="js/dancefloor_canvas.js"></script>
+    <script src="js/Light.js"></script>
+    <script src="js/confetti.js"></script>
+    <script src="js/discoball.js"></script>
+    <script src="js/Vector.js"></script>
+    <script src="js/Animationobject.js"></script>
+
+    <title>Lockdown Dancefloor</title>
+</head>
+
+<body>
+<header>
+    <img src="img/Logo.png" alt="Dancefloor" height=150px />
+</header>
+
+<section id="zeichenfläche">
+
+</section>
+<aside>
+    <div id="canvasSize">
+
+        <h3>Choose your size!</h3>
+
+        <input type="radio" name="Canvassize" value="radio1" id="format1" />
+        <label for="format1">Ultrapanorama</label> <br>
+        <input type="radio" name="Canvassize" value="radio2" id="format2" />
+        <label for="format2">Megasize</label> <br>
+        <input type="radio" name="Canvassize" value="radio3" id="format3" />
+        <label for="format3">Influencer Style</label> <br>
+
+
+    </div>
+    <div id="canvasStyle">
+
+        <h3>Choose your location!</h3>
+
+        <input type="radio" name="Canvasstyle" value="radio1" id="style1" />
+        <label for="style1">classy</label> <br>
+        <input type="radio" name="Canvasstyle" value="radio2" id="style2" />
+        <label for="style2">funky</label> <br>
+        <input type="radio" name="Canvasstyle" value="radio3" id="style3" />
+        <label for="style3">dark</label> <br>
+
+
+    </div>
+
+    <div id="buttons">
+    <img src="img/Button.jpg" alt="savebutton" id="savepic" height="70px"/>
+    <img src="img/Delete.jpg" alt="deletebutton" id="deletepic" height="70px"/>
+</div>
+<div id="loadpic">
+
+<form id="dropdownload">
+  <label>Load your saved image: <br/>
+    <select name="selectloadpic">
+      <option>Dein Bild 1</option>
+      <option>Dein Bild 2</option>
+    </select>
+  </label>
+</form>
+
+
+</div>
+</aside>
+
+<main>
+    <div id="mainCanvas">
+        <canvas id="mainCanvasDraw" width="500" height="300"></canvas>
+
+    </div>
+
+    <div id="lightdiv">
+
+
+        <canvas id="lights" height="70" width="70"></canvas>
+        <form id="animationLight">
+            <label>Animation
+              <select name="lightanimation">
+                <option>langsam</option>
+                <option>schnell</option>
+              </select>
+            </label>
+          </form>
+
+          <img src="img/Delete.jpg" id="deletelight" height="20px">
+
+     </div>
+     <br/>
+     <br/>
+
+
+     <div id="confettidiv">
+        <canvas id="confetti" height="70" width="70"></canvas>
+        <form id="animationConfetti">
+            <label>Animation
+              <select name="confettianimation">
+                <option>Hoch</option>
+                <option>Runter</option>
+              </select>
+            </label>
+          </form>
+          <img src="img/Delete.jpg" id="deleteconfetti" height="20px">
+
+      </div>
+      <br/>
+      <br/>
+      <br/>
+
+      <div id="balldiv">
+
+        <canvas id="discoball" height="70" width="70"></canvas>
+        <form id="animationBall">
+            <label>Animation
+              <select name="ballanimation">
+                <option>Links herum</option>
+                <option>Rechts herum</option>
+              </select>
+            </label>
+          </form>
+          <img src="img/Delete.jpg" id="deleteball" height="20px">
+    </div>
+
+   
+</main>
+<footer>
+ 
+</footer>
+    
+</body>
+</html>

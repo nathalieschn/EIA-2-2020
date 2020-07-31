@@ -1,0 +1,48 @@
+* {
+    background-color: black;
+    font-family: 'Verdana';
+    color: #d33693;
+    text-transform: uppercase;
+}
+
+#savepic:hover {
+   border-style: ridge;
+   border-color: #d33693;
+}
+#deletepic:hover {
+    border-style: ridge;
+    border-color: #d33693;
+}
+
+
+canvas {
+    float: left;
+    border-style: double;
+    border-color: #3e4a87;
+    margin: 5px;
+}
+
+aside {
+    float: right;
+    margin-right: 100px;
+}
+
+#deletelight:hover {
+    border-style: ridge;
+    border-color: #d33693;
+}
+#deleteconfetti:hover {
+    border-style: ridge;
+    border-color: #d33693;
+}
+
+#deleteball:hover {
+    border-style: ridge;
+    border-color: #d33693;
+}
+
+
+
+
+
+
