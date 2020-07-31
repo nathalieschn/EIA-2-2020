@@ -1,9 +1,11 @@
 namespace dancefloor {
 
+    // Canvas Rendering Context
     export let crc2: CanvasRenderingContext2D;
-    export let crcMain: CanvasRenderingContext2D;
+    export let crc3: CanvasRenderingContext2D;
+    export let crc4: CanvasRenderingContext2D;
     
-
+    // HTML Elemente Typzuweisungen
     let mainCanvas: HTMLCanvasElement;
     let deleteForm: boolean
     let deleteButton: HTMLButtonElement;
@@ -11,30 +13,29 @@ namespace dancefloor {
     let dragDrop: boolean = false;
     let objectDragDrop: Animationobject; 
 
-    let circleDiv: HTMLDivElement; 
+    let lightDiv: HTMLDivElement; 
     let starDiv: HTMLDivElement; 
     let triangleDiv: HTMLDivElement;
 
-    let crc3: CanvasRenderingContext2D;
-    let crc4: CanvasRenderingContext2D;
+    //Array Animationobjects
 
-    interface Vector {
-        x: number;
-        y: number;
-    }
+    let animationobject: Animationobject[] = [];
 
-
+    // Handle Load Eventlistener
     window.addEventListener("load", handleLoad);
+
+
 
     function handleLoad (_event: Event): void {
 
+        //Deklarationen
         deleteForm = true; 
-        let form: HTMLDivElement = <HTMLDivElement>document.querySelector("div#canvasSize");
-        let backgroundColor = <HTMLSelectElement>document.querySelector("div#canvasStyle");
+        let size: HTMLDivElement = <HTMLDivElement>document.querySelector("div#canvasSize");
+        let backgroundColor: HTMLDivElement = <HTMLDivElement>document.querySelector("div#canvasStyle");
 
-        circleDiv = <HTMLDivElement>document.getElementById("lights"); 
-        starDiv = <HTMLDivElement>document.getElementById("confetti"); 
-        triangleDiv = <HTMLDivElement>document.getElementById("discoball"); 
+        let lightDiv: HTMLDivElement = <HTMLDivElement>document.getElementById("lights"); 
+        let confettiDiv : HTMLDivElement = <HTMLDivElement>document.getElementById("confetti"); 
+        let ballDiv : HTMLDivElement = <HTMLDivElement>document.getElementById("discoball"); 
 
         
 
@@ -46,22 +47,27 @@ namespace dancefloor {
         crc2 = <CanvasRenderingContext2D>mainCanvas.getContext("2d");
 
 
-
+        //Eventlistener
         
 
-        form.addEventListener("change", chooseSize); 
+        size.addEventListener("change", chooseSize); 
 
         deleteButton.addEventListener("click", clearCanvas);
 
         backgroundColor.addEventListener("change", chooseBackground);
 
-        circleDiv.addEventListener("click", generateMainCanvas);
-        starDiv.addEventListener("click", generateMainCanvas);
-        triangleDiv.addEventListener("click", generateMainCanvas);
+        lightDiv.addEventListener("click", generateMainCanvas);
+        confettiDiv.addEventListener("click", generateMainCanvas);
+        ballDiv.addEventListener("click", generateMainCanvas);
+
+
+        //Startfunktionen 
+        lightCanvas();
 
         
     }
 
+    // Größe des MainCanvas auswählen
     function chooseSize(_event: Event): void {
  
         let target: HTMLElement = <HTMLElement>_event.target; 
@@ -93,6 +99,7 @@ namespace dancefloor {
         }
     }
 
+    // Hintergrundfarbe auswählen
     function chooseBackground (_event: Event): void {
 
         let target: HTMLSelectElement = <HTMLSelectElement>_event.target; 
@@ -199,6 +206,32 @@ namespace dancefloor {
 
     }
 
+    // Kleiner Canvas: Light
+    function lightCanvas(): void {
+        let _animationobject: number;
+            
+            let light: Light = new Light (????);
+            light.draw(crc2);
+    }
+
+    // Kleiner Canvas: Confetti
+    function confettiCanvas(): void {
+        let _animationobject: number;
+            
+            let confetti: Confetti = new Confetti (????);
+            confetti.draw(crc2);
+    }
+
+    //Kleiner Canvas: Discoball
+    function ballCanvas(): void {
+        let _animationobject: number;
+            
+            let ball: Ball = new Ball (????);
+            ball.draw(crc2);
+    }
+
+
+    // Ganzen Canvas-Inhalt löschen
     function clearCanvas(_event:Event): void {
 
         crc2.clearRect(0, 0, mainCanvas.width, mainCanvas.height);   
@@ -207,6 +240,7 @@ namespace dancefloor {
            
     }
 
+    //Bei Klick: Animationobjects in MainCanvas
     export function generateMainCanvas(_event: MouseEvent): void {
 
         
@@ -261,6 +295,7 @@ namespace dancefloor {
         }
     }
 
+    // Muss abgeändert werden! 
     function lightsInMain() {
         crc2.beginPath();
         crc2.arc(20,20,5,1,5*Math.PI);

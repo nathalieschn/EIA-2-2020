@@ -1,24 +1,46 @@
 namespace dancefloor {
 
+    export class Light extends Animationobject {
 
-
-
-    window.addEventListener("load", handleLoad);
-    let crc2: CanvasRenderingContext2D;
+        constructor(_position: Vector, _velocity: Vector, _radius: number, _rotation: number) {
+    
+        super(_position, _velocity, _radius, _rotation);
+    
+            if (_position)
+            this.position = _position.copy();
+            else 
+            this.velocity = new Vector(0, 0);
+    
+            this.radius = 10;
     
     
-    function handleLoad(_event: Event): void {
-        let canvas: HTMLCanvasElement | null = document.querySelector("canvas#lights");
-        if (!canvas)
-        return;
+            this.velocity = new Vector(1, 1);
+            this.velocity = Vector.getRandom(1, 1);
 
-        crc2 = <CanvasRenderingContext2D>canvas.getContext("2d");
+        }
 
-        drawLights();
-    }
+        move(_timeslice: number): void {
+            
+            let offset: Vector = new Vector(0,0);
+            offset.scale(_timeslice);
+            this.position.add(offset);
 
-    export function drawLights() {
+            if (this.position.x < 0)
+                this.position.x += (crc2.canvas.width);
+            if (this.position.y < 0)
+                this.position.y += crc2.canvas.height;
+            if (this.position.x > (crc2.canvas.width))
+                this.position.x -= (crc2.canvas.width);
+            if (this.position.y > crc2.canvas.height)
+                this.position.y -= crc2.canvas.height;
+
+        }
+    
+    
         
+        
+        public draw(_crc: CanvasRenderingContext2D): void {
+
         crc2.beginPath();
         crc2.arc(20,20,5,1,5*Math.PI);
         crc2.closePath();
@@ -31,7 +53,6 @@ namespace dancefloor {
         crc2.lineTo(60, 20);
         crc2.strokeStyle="white";
         crc2.stroke();
-
-
+        }
     }
 }
