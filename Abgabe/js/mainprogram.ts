@@ -279,19 +279,25 @@ namespace dancefloor {
     function animate(_event: MouseEvent): void {
 
         crc0.putImageData(canvasBase, 0, 0);
+        
 
-        for (let symbol of drawings) {
-            if (symbol instanceof Light)
-            symbol.move (1 / 20 );
-            else if (symbol instanceof Confetti)
-            symbol.move (1 / 20 ); 
-            else if (symbol instanceof Ball) 
-            symbol.move(100 / 100);
-            symbol.draw(crc0);
+        for (let type of drawings) {
+            if (type instanceof Light)
+            type.move (5 / 20 );
+            else if (type instanceof Confetti)
+            type.move (1 / 5 ); 
+            else if (type instanceof Ball) 
+            type.move(30 / 20);
+            type.draw(crc0);
         }
 
         if (dragDrop == true) {
             objectDragDrop.draw(crc0);
+        }
+
+        function changeAnimationLights(_event: Event): void {
+        let target: HTMLSelectElement = <HTMLSelectElement>_event.target;
+        let value: string = target.value;
         }
 
 
@@ -305,10 +311,13 @@ namespace dancefloor {
         switch (value) {
     
             case "langsam":
-                console.log("langsam");
+                
+               // Light.move(1 / 50);
+                
+
                 break;
             case "schnell":
-                console.log("schnell");
+                console.log("schnell")
                 break;
         }
     }
@@ -424,6 +433,8 @@ namespace dancefloor {
         let discoName: string = prompt("Wie heißt Deine Disco?");
 
     }
+
+
 
 
 }

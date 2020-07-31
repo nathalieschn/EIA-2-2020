@@ -214,17 +214,21 @@ var dancefloor;
     // Animation der Bälle
     function animate(_event) {
         dancefloor.crc0.putImageData(canvasBase, 0, 0);
-        for (let symbol of drawings) {
-            if (symbol instanceof dancefloor.Light)
-                symbol.move(1 / 20);
-            else if (symbol instanceof dancefloor.Confetti)
-                symbol.move(1 / 20);
-            else if (symbol instanceof dancefloor.Ball)
-                symbol.move(100 / 100);
-            symbol.draw(dancefloor.crc0);
+        for (let type of drawings) {
+            if (type instanceof dancefloor.Light)
+                type.move(5 / 20);
+            else if (type instanceof dancefloor.Confetti)
+                type.move(1 / 5);
+            else if (type instanceof dancefloor.Ball)
+                type.move(30 / 20);
+            type.draw(dancefloor.crc0);
         }
         if (dragDrop == true) {
             objectDragDrop.draw(dancefloor.crc0);
+        }
+        function changeAnimationLights(_event) {
+            let target = _event.target;
+            let value = target.value;
         }
     }
     function changeAnimationLights(_event) {
@@ -232,7 +236,7 @@ var dancefloor;
         let value = target.value;
         switch (value) {
             case "langsam":
-                console.log("langsam");
+                // Light.move(1 / 50);
                 break;
             case "schnell":
                 console.log("schnell");
