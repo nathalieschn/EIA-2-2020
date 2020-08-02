@@ -44,16 +44,22 @@ aside {
 #undo {
     padding: 3px;
     border-style: solid;
-    border-color: #d33693;
+    
+    color: white;
+    border-color: #3e4a87;
     margin-left: 7px;
     margin-top: -7px;
+    width: 50px;
     
 }
 
 #undo:hover {
     border-style: ridge;
-    height: 30px;
-    width: 60px;
+    padding: 5px;
+    color: white;
+    border-color: #3e4a87;
+    border-color: #d33693;
+    color: #d33693;
 }
 
 

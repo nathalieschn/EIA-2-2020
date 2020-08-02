@@ -18,7 +18,7 @@ namespace dancefloor {
     let deleteLight: HTMLDivElement;
     let deleteConfetti: HTMLDivElement;
     let deleteBall: HTMLDivElement;
-    let undoButton: HTMLButtonElement;
+    let undoButton: HTMLDivElement;
 
     let scale: HTMLDivElement;
     let backgroundColor: HTMLDivElement;
@@ -63,7 +63,7 @@ namespace dancefloor {
         deleteLight = <HTMLDivElement>document.getElementById("deletelight");
         deleteConfetti = <HTMLDivElement>document.getElementById("deleteconfetti");
         deleteBall = <HTMLDivElement>document.getElementById("deleteball");
-        undoButton = <HTMLButtonElement>document.getElementById("undo");
+        undoButton = <HTMLDivElement>document.getElementById("undo");
         
 
         
