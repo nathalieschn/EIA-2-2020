@@ -15,7 +15,7 @@
         
         
                 this.velocity = new Vector(0, 0);
-                this.velocity = Vector.getRandom(10, 30);
+                this.velocity = Vector.getRandom(5, 20);
             }
     
             public draw(_crc: CanvasRenderingContext2D): void {

@@ -219,14 +219,48 @@ var dancefloor;
     // Animation der Bälle
     function animate(_event) {
         dancefloor.crc0.putImageData(canvasBase, 0, 0);
+        let target = _event.target;
+        let value = target.value;
         for (let type of drawings) {
             if (type instanceof dancefloor.Light)
-                type.move(5 / 20);
-            else if (type instanceof dancefloor.Confetti)
-                type.move(1 / 5);
-            else if (type instanceof dancefloor.Ball)
-                type.move(30 / 20);
-            type.draw(dancefloor.crc0);
+                type.move(0 / 0);
+            switch (value) {
+                case ("schnell"):
+                    type.move(5 / 6);
+                    break;
+                case ("langsam"):
+                    type.move(5 / 20);
+                    break;
+                case ("noanimation"):
+                    type.move(0 / 0);
+                    break;
+            }
+            if (type instanceof dancefloor.Confetti)
+                type.move(0 / 0);
+            switch (value) {
+                case ("schnell"):
+                    type.move(5 / 6);
+                    break;
+                case ("langsam"):
+                    type.move(5 / 20);
+                    break;
+                case ("noanimation"):
+                    type.move(0 / 0);
+                    break;
+            }
+            if (type instanceof dancefloor.Ball)
+                type.move(0 / 0);
+            switch (value) {
+                case ("schnell"):
+                    type.move(5 / 6);
+                    break;
+                case ("langsam"):
+                    type.move(5 / 20);
+                    break;
+                case ("noanimation"):
+                    type.move(0 / 0);
+                    break;
+            }
         }
         if (dragDrop == true) {
             objectDragDrop.draw(dancefloor.crc0);
@@ -239,11 +273,9 @@ var dancefloor;
         switch (value) {
             case "langsam":
                 console.log("langsam");
-                drawings[object].move(5 / 50);
                 break;
             case "schnell":
                 console.log("schnell");
-                drawings[object].move(5 / 6);
                 break;
         }
     }

@@ -281,29 +281,72 @@ namespace dancefloor {
 
 
     // Animation der Bälle
-    function animate(_event: MouseEvent): void {
+     function animate(_event: MouseEvent): void {
 
         crc0.putImageData(canvasBase, 0, 0);
+        let target: HTMLSelectElement = <HTMLSelectElement>_event.target;
+        let value: string = target.value;
         
 
         for (let type of drawings) {
             if (type instanceof Light)
-            type.move (5 / 20 );
+            type.move(0/0);
+            switch(value){
+                case("schnell"):
+                type.move(5/6);
+                break;
+
+                case("langsam"):
+                type.move(5/20);
+                break;
+
+                case("noanimation"):
+                type.move(0/0);
+                break;
+            }
             else if (type instanceof Confetti)
-            type.move (1 / 5 ); 
+            type.move(0/0);
+
+            switch(value){
+                case("schnell"):
+                type.move(5/6);
+                break;
+
+                case("langsam"):
+                type.move(5/20);
+                break;
+
+                case("noanimation"):
+                type.move(0/0);
+                break;
+
+
+            }
             else if (type instanceof Ball) 
-            type.move(30 / 20);
-            type.draw(crc0);
+            type.move(0/0);
+            switch(value){
+                case("schnell"):
+                type.move(5/6);
+                break;
+
+                case("langsam"):
+                type.move(5/20);
+                break;
+
+                case("noanimation"):
+                type.move(0/0);
+                break;
+            }
         }
 
         if (dragDrop == true) {
             objectDragDrop.draw(crc0);
-        }
+        } 
 
        
 
 
-    }
+   }
 
     function changeAnimationLights (_event: Event): void {
     
@@ -315,12 +358,12 @@ namespace dancefloor {
         switch (value) {
             case "langsam":
             console.log("langsam");
-            drawings[object].move(5/50);
+            
             break;
 
             case "schnell":
             console.log("schnell");
-            drawings[object].move(5/6);
+            
             
             break;
         }

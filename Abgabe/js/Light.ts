@@ -16,7 +16,7 @@ namespace dancefloor {
     
     
             this.velocity = new Vector(0, 0);
-            this.velocity = Vector.getRandom(50, 20);
+            this.velocity = Vector.getRandom(5, 20);
         }
 
         public draw(_crc: CanvasRenderingContext2D): void {

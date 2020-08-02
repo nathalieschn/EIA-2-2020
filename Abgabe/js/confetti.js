@@ -9,7 +9,7 @@ var dancefloor;
                 this.velocity = new dancefloor.Vector(0, 0);
             this.radius = 20;
             this.velocity = new dancefloor.Vector(0, 0);
-            this.velocity = dancefloor.Vector.getRandom(10, 30);
+            this.velocity = dancefloor.Vector.getRandom(5, 20);
         }
         draw(_crc) {
             _crc.save();
