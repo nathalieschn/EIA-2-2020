@@ -358,8 +358,8 @@ var dancefloor;
     function deleteBalls() {
         console.log("Delete Ball verknüpft");
         for (let type of Balldrawings) {
-            type.position.x = 10000;
-            type.position.y = 20000;
+            type.position.x = 10000000000000000000000000000000000000000000000000;
+            type.position.y = 20000000000000000000000000000000000000000000000000000;
         }
     }
     function saveImage(_event) {
