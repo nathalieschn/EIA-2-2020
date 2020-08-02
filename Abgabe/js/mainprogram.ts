@@ -33,6 +33,9 @@ namespace dancefloor {
 
     //Arrays
     let drawings: Animationobject[] = [];
+    let Lightdrawings: Animationobject[]=[];
+    let Confettidrawings: Animationobject[]=[];
+    let Balldrawings: Animationobject[]=[];
     let canvasBase: ImageData;
 
     //handleLoad
@@ -252,17 +255,20 @@ namespace dancefloor {
     
             let target: HTMLElement = <HTMLElement>_event.target;
             let id: string = target.id;
-            let positionForCanvas: Vector = new Vector(crc0.canvas.width / 2, crc0.canvas.height / 2);
+            let positionForCanvas: Vector = new Vector(crc0.canvas.width + 250 , crc0.canvas.height + 50);
             let onCanvas: Animationobject;
             switch (id) {
                 case "lights":
                     onCanvas = new Light(positionForCanvas);
+                    Lightdrawings.push(onCanvas);
                     break;
                 case "confetti":
                     onCanvas = new Confetti(positionForCanvas);
+                    Confettidrawings.push(onCanvas);
                     break;
                 case "discoball":
                     onCanvas = new Ball(positionForCanvas);
+                    Balldrawings.push(onCanvas);
                     break;
                 default:
                     return;
@@ -309,12 +315,13 @@ namespace dancefloor {
         switch (value) {
             case "langsam":
             console.log("langsam");
-            drawings[object].velocity = new Vector (1,1);
+            drawings[object].move(5/50);
+            drawings[object].draw(crc0);
             break;
 
             case "schnell":
             console.log("schnell");
-            drawings[object].velocity = new Vector (17,19);
+            drawings[object].move(1/2);
             break;
         }
     }
@@ -346,6 +353,7 @@ namespace dancefloor {
     
             case "langsam":
                 console.log("langsam");
+
                 break;
             case "schnell":
                 console.log("schnell");
@@ -406,10 +414,12 @@ namespace dancefloor {
 
         crc0.clearRect(0, 0, mainCanvas.width, mainCanvas.height);
         drawings = [];
+        
     }
 
     function deleteLights(_event: Event): void {
         console.log("Delete deleteLights verknüpft");
+        Lightdrawings = [];
 
 
     }

@@ -30,6 +30,9 @@ var dancefloor;
     let changeBallAnimation;
     //Arrays
     let drawings = [];
+    let Lightdrawings = [];
+    let Confettidrawings = [];
+    let Balldrawings = [];
     let canvasBase;
     //handleLoad
     window.addEventListener("load", handleLoad);
@@ -191,17 +194,20 @@ var dancefloor;
     function objectInMain(_event) {
         let target = _event.target;
         let id = target.id;
-        let positionForCanvas = new dancefloor.Vector(dancefloor.crc0.canvas.width / 2, dancefloor.crc0.canvas.height / 2);
+        let positionForCanvas = new dancefloor.Vector(dancefloor.crc0.canvas.width + 250, dancefloor.crc0.canvas.height + 50);
         let onCanvas;
         switch (id) {
             case "lights":
                 onCanvas = new dancefloor.Light(positionForCanvas);
+                Lightdrawings.push(onCanvas);
                 break;
             case "confetti":
                 onCanvas = new dancefloor.Confetti(positionForCanvas);
+                Confettidrawings.push(onCanvas);
                 break;
             case "discoball":
                 onCanvas = new dancefloor.Ball(positionForCanvas);
+                Balldrawings.push(onCanvas);
                 break;
             default:
                 return;
@@ -233,11 +239,12 @@ var dancefloor;
         switch (value) {
             case "langsam":
                 console.log("langsam");
-                drawings[object].velocity = new dancefloor.Vector(1, 1);
+                drawings[object].move(5 / 50);
+                drawings[object].draw(dancefloor.crc0);
                 break;
             case "schnell":
                 console.log("schnell");
-                drawings[object].velocity = new dancefloor.Vector(17, 19);
+                drawings[object].move(1 / 2);
                 break;
         }
     }
@@ -306,6 +313,7 @@ var dancefloor;
     }
     function deleteLights(_event) {
         console.log("Delete deleteLights verknüpft");
+        Lightdrawings = [];
     }
     function deleteConfettis() {
         console.log("Delete Confetti verknüpft");
