@@ -284,59 +284,10 @@ namespace dancefloor {
      function animate(_event: MouseEvent): void {
 
         crc0.putImageData(canvasBase, 0, 0);
-        let target: HTMLSelectElement = <HTMLSelectElement>_event.target;
-        let value: string = target.value;
-        
 
         for (let type of drawings) {
-            if (type instanceof Light)
-            type.move(0/0);
-            switch(value){
-                case("schnell"):
-                type.move(5/6);
-                break;
-
-                case("langsam"):
-                type.move(5/20);
-                break;
-
-                case("noanimation"):
-                type.move(0/0);
-                break;
-            }
-            else if (type instanceof Confetti)
-            type.move(0/0);
-
-            switch(value){
-                case("schnell"):
-                type.move(5/6);
-                break;
-
-                case("langsam"):
-                type.move(5/20);
-                break;
-
-                case("noanimation"):
-                type.move(0/0);
-                break;
-
-
-            }
-            else if (type instanceof Ball) 
-            type.move(0/0);
-            switch(value){
-                case("schnell"):
-                type.move(5/6);
-                break;
-
-                case("langsam"):
-                type.move(5/20);
-                break;
-
-                case("noanimation"):
-                type.move(0/0);
-                break;
-            }
+            type.move (70 / 71 );
+            type.draw(crc0);
         }
 
         if (dragDrop == true) {
@@ -351,19 +302,33 @@ namespace dancefloor {
     function changeAnimationLights (_event: Event): void {
     
         
-        let object: number = drawings.length -1;
+        
         let target: HTMLSelectElement = <HTMLSelectElement>_event.target;
         let value: string = target.value;
 
         switch (value) {
+
+            case "noanimation":
+                for (let type of Lightdrawings) {
+                    type.velocity = new Vector(0,0);
+                    type.draw(crc0);
+                }
+            
+            break;
             case "langsam":
-            console.log("langsam");
+                for (let type of Lightdrawings) {
+                    type.velocity = new Vector(5,10);
+                    type.draw(crc0);
+                }
             
             break;
 
             case "schnell":
             console.log("schnell");
-            
+            for (let type of Lightdrawings) {
+                type.velocity = new Vector(10,60);
+                type.draw(crc0);
+            }
             
             break;
         }
@@ -376,13 +341,31 @@ namespace dancefloor {
         let value: string = target.value;
     
         switch (value) {
+
+            case "noanimation":
+                for (let type of Confettidrawings) {
+                    type.velocity = new Vector(0,0);
+                    type.draw(crc0);
+                }
+            
+            break;
     
             case "langsam":
-                console.log("langsam");
-                break;
+                for (let type of Confettidrawings) {
+                    type.velocity = new Vector(5,10);
+                    type.draw(crc0);
+                }
+            
+            break;
+
             case "schnell":
-                console.log("schnell");
-                break;
+            console.log("schnell");
+            for (let type of Confettidrawings) {
+                type.velocity = new Vector(10,60);
+                type.draw(crc0);
+            }
+            
+            break;
         }
     }
 
@@ -393,14 +376,30 @@ namespace dancefloor {
         let value: string = target.value;
     
         switch (value) {
+            case "noanimation":
+                for (let type of Balldrawings) {
+                    type.velocity = new Vector(0,0);
+                    type.draw(crc0);
+                }
+            
+            break;
     
             case "langsam":
-                console.log("langsam");
+                for (let type of Balldrawings) {
+                    type.velocity = new Vector(5,10);
+                    type.draw(crc0);
+                }
+            
+            break;
 
-                break;
             case "schnell":
-                console.log("schnell");
-                break;
+            console.log("schnell");
+            for (let type of Balldrawings) {
+                type.velocity = new Vector(5,50);
+                type.draw(crc0);
+            }
+            
+            break;
         }
     }
 

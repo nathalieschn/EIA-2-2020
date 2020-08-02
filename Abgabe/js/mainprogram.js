@@ -219,63 +219,36 @@ var dancefloor;
     // Animation der Bälle
     function animate(_event) {
         dancefloor.crc0.putImageData(canvasBase, 0, 0);
-        let target = _event.target;
-        let value = target.value;
         for (let type of drawings) {
-            if (type instanceof dancefloor.Light)
-                type.move(0 / 0);
-            switch (value) {
-                case ("schnell"):
-                    type.move(5 / 6);
-                    break;
-                case ("langsam"):
-                    type.move(5 / 20);
-                    break;
-                case ("noanimation"):
-                    type.move(0 / 0);
-                    break;
-            }
-            if (type instanceof dancefloor.Confetti)
-                type.move(0 / 0);
-            switch (value) {
-                case ("schnell"):
-                    type.move(5 / 6);
-                    break;
-                case ("langsam"):
-                    type.move(5 / 20);
-                    break;
-                case ("noanimation"):
-                    type.move(0 / 0);
-                    break;
-            }
-            if (type instanceof dancefloor.Ball)
-                type.move(0 / 0);
-            switch (value) {
-                case ("schnell"):
-                    type.move(5 / 6);
-                    break;
-                case ("langsam"):
-                    type.move(5 / 20);
-                    break;
-                case ("noanimation"):
-                    type.move(0 / 0);
-                    break;
-            }
+            type.move(70 / 71);
+            type.draw(dancefloor.crc0);
         }
         if (dragDrop == true) {
             objectDragDrop.draw(dancefloor.crc0);
         }
     }
     function changeAnimationLights(_event) {
-        let object = drawings.length - 1;
         let target = _event.target;
         let value = target.value;
         switch (value) {
+            case "noanimation":
+                for (let type of Lightdrawings) {
+                    type.velocity = new dancefloor.Vector(0, 0);
+                    type.draw(dancefloor.crc0);
+                }
+                break;
             case "langsam":
-                console.log("langsam");
+                for (let type of Lightdrawings) {
+                    type.velocity = new dancefloor.Vector(5, 10);
+                    type.draw(dancefloor.crc0);
+                }
                 break;
             case "schnell":
                 console.log("schnell");
+                for (let type of Lightdrawings) {
+                    type.velocity = new dancefloor.Vector(10, 60);
+                    type.draw(dancefloor.crc0);
+                }
                 break;
         }
     }
@@ -284,11 +257,24 @@ var dancefloor;
         let target = _event.target;
         let value = target.value;
         switch (value) {
+            case "noanimation":
+                for (let type of Confettidrawings) {
+                    type.velocity = new dancefloor.Vector(0, 0);
+                    type.draw(dancefloor.crc0);
+                }
+                break;
             case "langsam":
-                console.log("langsam");
+                for (let type of Confettidrawings) {
+                    type.velocity = new dancefloor.Vector(5, 10);
+                    type.draw(dancefloor.crc0);
+                }
                 break;
             case "schnell":
                 console.log("schnell");
+                for (let type of Confettidrawings) {
+                    type.velocity = new dancefloor.Vector(10, 60);
+                    type.draw(dancefloor.crc0);
+                }
                 break;
         }
     }
@@ -297,11 +283,24 @@ var dancefloor;
         let target = _event.target;
         let value = target.value;
         switch (value) {
+            case "noanimation":
+                for (let type of Balldrawings) {
+                    type.velocity = new dancefloor.Vector(0, 0);
+                    type.draw(dancefloor.crc0);
+                }
+                break;
             case "langsam":
-                console.log("langsam");
+                for (let type of Balldrawings) {
+                    type.velocity = new dancefloor.Vector(5, 10);
+                    type.draw(dancefloor.crc0);
+                }
                 break;
             case "schnell":
                 console.log("schnell");
+                for (let type of Balldrawings) {
+                    type.velocity = new dancefloor.Vector(5, 50);
+                    type.draw(dancefloor.crc0);
+                }
                 break;
         }
     }

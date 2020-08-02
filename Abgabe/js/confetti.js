@@ -6,10 +6,8 @@ var dancefloor;
             if (_position)
                 this.position = _position.copy();
             else
-                this.velocity = new dancefloor.Vector(0, 0);
-            this.radius = 20;
+                this.radius = 20;
             this.velocity = new dancefloor.Vector(0, 0);
-            this.velocity = dancefloor.Vector.getRandom(5, 20);
         }
         draw(_crc) {
             _crc.save();

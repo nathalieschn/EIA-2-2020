@@ -9,13 +9,11 @@
                 if (_position)
                 this.position = _position.copy();
                 else 
-                this.velocity = new Vector(0, 0);
         
                 this.radius = 20;
         
         
                 this.velocity = new Vector(0, 0);
-                this.velocity = Vector.getRandom(5, 20);
             }
     
             public draw(_crc: CanvasRenderingContext2D): void {
