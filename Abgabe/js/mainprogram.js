@@ -20,6 +20,7 @@ var dancefloor;
     let deleteLight;
     let deleteConfetti;
     let deleteBall;
+    let undoButton;
     let scale;
     let backgroundColor;
     let lightElement;
@@ -56,6 +57,7 @@ var dancefloor;
             deleteLight = document.getElementById("deletelight");
             deleteConfetti = document.getElementById("deleteconfetti");
             deleteBall = document.getElementById("deleteball");
+            undoButton = document.getElementById("undo");
             // Rendering Context den crc Variablen zuweisen
             dancefloor.crc0 = mainCanvas.getContext("2d");
             dancefloor.Lightcrc = canvasLight.getContext("2d");
@@ -81,6 +83,7 @@ var dancefloor;
             deleteLight.addEventListener("click", deleteLights);
             deleteConfetti.addEventListener("click", deleteConfettis);
             deleteBall.addEventListener("click", deleteBalls);
+            undoButton.addEventListener("click", undo);
             // Funktionen, die beim Start aufgerufen werden sollen
             canvasBackground(_event);
             setInterval(animate, 100);
@@ -365,6 +368,10 @@ var dancefloor;
             type.velocity = new dancefloor.Vector(0, 0);
             console.log(type.position);
         }
+    }
+    function undo() {
+        console.log("undo");
+        drawings.splice(drawings.length - 1);
     }
     function saveImage(_event) {
         return __awaiter(this, void 0, void 0, function* () {

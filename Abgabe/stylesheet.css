@@ -41,6 +41,21 @@ aside {
     border-color: #d33693;
 }
 
+#undo {
+    padding: 3px;
+    border-style: solid;
+    border-color: #d33693;
+    margin-left: 7px;
+    margin-top: -7px;
+    
+}
+
+#undo:hover {
+    border-style: ridge;
+    height: 30px;
+    width: 60px;
+}
+
 
 
 

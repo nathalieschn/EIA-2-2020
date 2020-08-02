@@ -18,6 +18,7 @@ namespace dancefloor {
     let deleteLight: HTMLDivElement;
     let deleteConfetti: HTMLDivElement;
     let deleteBall: HTMLDivElement;
+    let undoButton: HTMLButtonElement;
 
     let scale: HTMLDivElement;
     let backgroundColor: HTMLDivElement;
@@ -62,6 +63,7 @@ namespace dancefloor {
         deleteLight = <HTMLDivElement>document.getElementById("deletelight");
         deleteConfetti = <HTMLDivElement>document.getElementById("deleteconfetti");
         deleteBall = <HTMLDivElement>document.getElementById("deleteball");
+        undoButton = <HTMLButtonElement>document.getElementById("undo");
         
 
         
@@ -97,6 +99,7 @@ namespace dancefloor {
         deleteLight.addEventListener("click", deleteLights);
         deleteConfetti.addEventListener("click", deleteConfettis);
         deleteBall.addEventListener("click", deleteBalls);
+        undoButton.addEventListener("click",undo);
 
         // Funktionen, die beim Start aufgerufen werden sollen
         canvasBackground(_event);
@@ -474,10 +477,11 @@ namespace dancefloor {
     function deleteConfettis(): void {
         console.log("Delete Confetti verknüpft");
         for (let type of Confettidrawings){
+            
             type.position.x = 100000000000000000;
             
             type.position.y = 100000000000000000;
-            type.velocity = new Vector (0,0);
+            type.velocity = new Vector (0,0); 
         }
     }
 
@@ -491,6 +495,14 @@ namespace dancefloor {
             console.log (type.position);
         }
     }
+
+    function undo(): void {
+        console.log("undo");
+
+        drawings.splice(drawings.length-1);
+    }
+
+    
 
 
 
