@@ -316,12 +316,12 @@ namespace dancefloor {
             case "langsam":
             console.log("langsam");
             drawings[object].move(5/50);
-            drawings[object].draw(crc0);
             break;
 
             case "schnell":
             console.log("schnell");
-            drawings[object].move(1/2);
+            drawings[object].move(5/6);
+            
             break;
         }
     }
