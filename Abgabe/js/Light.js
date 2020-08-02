@@ -16,7 +16,6 @@ var dancefloor;
             _crc.translate(this.position.x, this.position.y);
             _crc.translate(-40, -40);
             _crc.scale(1.2, 1.2);
-            console.log(this.position.x, this.position.y);
             _crc.beginPath();
             _crc.arc(35, 35, 20, 1, 5 * Math.PI);
             _crc.closePath();

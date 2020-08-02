@@ -33,7 +33,6 @@ namespace dancefloor {
 
     //Arrays
     let drawings: Animationobject[] = [];
-    let safeImage: string[] = [];
     let canvasBase: ImageData;
 
     //handleLoad
@@ -49,7 +48,7 @@ namespace dancefloor {
         confettiElement = <HTMLDivElement>document.getElementById("confetti");
         ballElement = <HTMLDivElement>document.getElementById("discoball");
         // - CanvasElemente
-        mainCanvas = <HTMLCanvasElement>document.getElementById("mainCanvasDraw");
+        mainCanvas = <HTMLCanvasElement>document.getElementById("mainCanvas");
         let canvasLight: HTMLCanvasElement = <HTMLCanvasElement>document.getElementById("lights");
         let canvasConf: HTMLCanvasElement = <HTMLCanvasElement>document.getElementById("confetti");
         let canvasBall: HTMLCanvasElement = <HTMLCanvasElement>document.getElementById("discoball");
@@ -295,30 +294,28 @@ namespace dancefloor {
             objectDragDrop.draw(crc0);
         }
 
-        function changeAnimationLights(_event: Event): void {
-        let target: HTMLSelectElement = <HTMLSelectElement>_event.target;
-        let value: string = target.value;
-        }
+       
 
 
     }
 
     function changeAnimationLights (_event: Event): void {
     
+        
+        let object: number = drawings.length -1;
         let target: HTMLSelectElement = <HTMLSelectElement>_event.target;
         let value: string = target.value;
-    
-        switch (value) {
-    
-            case "langsam":
-                
-               // Light.move(1 / 50);
-                
 
-                break;
+        switch (value) {
+            case "langsam":
+            console.log("langsam");
+            drawings[object].velocity = new Vector (1,1);
+            break;
+
             case "schnell":
-                console.log("schnell")
-                break;
+            console.log("schnell");
+            drawings[object].velocity = new Vector (17,19);
+            break;
         }
     }
 
@@ -396,7 +393,6 @@ namespace dancefloor {
 
     function placeSymbol(_event: MouseEvent): void {
 
-
         if (dragDrop == true) {
             dragDrop = false;
             drawings.push(objectDragDrop);
@@ -412,8 +408,10 @@ namespace dancefloor {
         drawings = [];
     }
 
-    function deleteLights(): void {
-        console.log("Delete Light verknüpft");
+    function deleteLights(_event: Event): void {
+        console.log("Delete deleteLights verknüpft");
+
+
     }
 
     function deleteConfettis(): void {
@@ -434,7 +432,9 @@ namespace dancefloor {
 
     }
 
+    function savePic() : void {
+        
 
 
-
+}
 }

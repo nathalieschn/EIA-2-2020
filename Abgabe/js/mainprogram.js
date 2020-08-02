@@ -30,7 +30,6 @@ var dancefloor;
     let changeBallAnimation;
     //Arrays
     let drawings = [];
-    let safeImage = [];
     let canvasBase;
     //handleLoad
     window.addEventListener("load", handleLoad);
@@ -43,7 +42,7 @@ var dancefloor;
             confettiElement = document.getElementById("confetti");
             ballElement = document.getElementById("discoball");
             // - CanvasElemente
-            mainCanvas = document.getElementById("mainCanvasDraw");
+            mainCanvas = document.getElementById("mainCanvas");
             let canvasLight = document.getElementById("lights");
             let canvasConf = document.getElementById("confetti");
             let canvasBall = document.getElementById("discoball");
@@ -226,20 +225,19 @@ var dancefloor;
         if (dragDrop == true) {
             objectDragDrop.draw(dancefloor.crc0);
         }
-        function changeAnimationLights(_event) {
-            let target = _event.target;
-            let value = target.value;
-        }
     }
     function changeAnimationLights(_event) {
+        let object = drawings.length - 1;
         let target = _event.target;
         let value = target.value;
         switch (value) {
             case "langsam":
-                // Light.move(1 / 50);
+                console.log("langsam");
+                drawings[object].velocity = new dancefloor.Vector(1, 1);
                 break;
             case "schnell":
                 console.log("schnell");
+                drawings[object].velocity = new dancefloor.Vector(17, 19);
                 break;
         }
     }
@@ -306,8 +304,8 @@ var dancefloor;
         dancefloor.crc0.clearRect(0, 0, mainCanvas.width, mainCanvas.height);
         drawings = [];
     }
-    function deleteLights() {
-        console.log("Delete Light verknüpft");
+    function deleteLights(_event) {
+        console.log("Delete deleteLights verknüpft");
     }
     function deleteConfettis() {
         console.log("Delete Confetti verknüpft");
@@ -320,6 +318,8 @@ var dancefloor;
             console.log("savebutton gedrückt");
             let discoName = prompt("Wie heißt Deine Disco?");
         });
+    }
+    function savePic() {
     }
 })(dancefloor || (dancefloor = {}));
 //# sourceMappingURL=mainprogram.js.map
