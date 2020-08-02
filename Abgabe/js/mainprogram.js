@@ -344,22 +344,26 @@ var dancefloor;
     function deleteLights(_event) {
         console.log("Delete deleteLights verknüpft");
         for (let type of Lightdrawings) {
-            type.position.x = 10000;
-            type.position.y = 20000;
+            type.position.x = 100000000000000000;
+            type.position.y = 100000000000000000;
+            type.velocity = new dancefloor.Vector(0, 0);
         }
     }
     function deleteConfettis() {
         console.log("Delete Confetti verknüpft");
         for (let type of Confettidrawings) {
-            type.position.x = 10000;
-            type.position.y = 20000;
+            type.position.x = 100000000000000000;
+            type.position.y = 100000000000000000;
+            type.velocity = new dancefloor.Vector(0, 0);
         }
     }
     function deleteBalls() {
         console.log("Delete Ball verknüpft");
         for (let type of Balldrawings) {
-            type.position.x = 10000000000000000000000000000000000000000000000000;
-            type.position.y = 20000000000000000000000000000000000000000000000000000;
+            type.position.x = 100000000000000000;
+            type.position.y = 100000000000000000;
+            type.velocity = new dancefloor.Vector(0, 0);
+            console.log(type.position);
         }
     }
     function saveImage(_event) {
