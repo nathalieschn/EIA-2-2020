@@ -343,13 +343,24 @@ var dancefloor;
     }
     function deleteLights(_event) {
         console.log("Delete deleteLights verknüpft");
-        Lightdrawings = [];
+        for (let type of Lightdrawings) {
+            type.position.x = 10000;
+            type.position.y = 20000;
+        }
     }
     function deleteConfettis() {
         console.log("Delete Confetti verknüpft");
+        for (let type of Confettidrawings) {
+            type.position.x = 10000;
+            type.position.y = 20000;
+        }
     }
     function deleteBalls() {
         console.log("Delete Ball verknüpft");
+        for (let type of Balldrawings) {
+            type.position.x = 10000;
+            type.position.y = 20000;
+        }
     }
     function saveImage(_event) {
         return __awaiter(this, void 0, void 0, function* () {
