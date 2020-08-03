@@ -2,7 +2,7 @@
   "name": "abgabe",
   "version": "1.0.0",
   "description": "Dancefloor",
-  "main": "",
+  "main": "Server.js",
   "scripts": {
     "start": "node Server/Server.js remote"
   },
