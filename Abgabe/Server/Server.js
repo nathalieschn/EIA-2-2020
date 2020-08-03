@@ -19,7 +19,7 @@ var dancefloor;
     let port = process.env.PORT;
     if (port == undefined)
         port = 5001;
-    let databaseUrl = "";
+    let databaseUrl = "mongodb+srv://Nathalie_SCH:1234@eia2-nathalie-j7mxw.mongodb.net/Disco?retryWrites=true&w=majority";
     console.log("Server starting on port:" + port);
     server.listen(port);
     server.addListener("request", handleRequest);

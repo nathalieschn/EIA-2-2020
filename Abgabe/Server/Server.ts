@@ -11,7 +11,7 @@ export namespace dancefloor {
     if (port == undefined)
         port = 5001;
     
-    let databaseUrl: string = "";
+    let databaseUrl: string = "mongodb+srv://Nathalie_SCH:1234@eia2-nathalie-j7mxw.mongodb.net/Disco?retryWrites=true&w=majority";
 
     console.log("Server starting on port:" + port);
 
