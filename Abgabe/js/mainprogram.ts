@@ -564,11 +564,35 @@ namespace dancefloor {
                 sendData(info, _disconame);
         }
 
-        function sendData(_info: CanvasInformation[], _disconame: string) {
+        async function sendData(_info: CanvasInformation[], _disconame: string): Promise<void> {
             console.log("Daten gesendet");
             
             console.log(_disconame)
             console.log(_info);
+
+        let name: string = _disconame.replace(" ", "_");
+        let canvasSettings: string[] = [];
+        let width: string = Math.floor(crc0.canvas.width).toString();
+        let height: string = Math.floor(crc0.canvas.height).toString();
+        let background: string = crc0.getImageData.toString();
+        
+        canvasSettings.push(width, height, background);
+
+        let canvasToSave: string = JSON.stringify(canvasSettings);
+        let canvasQuery: URLSearchParams = new URLSearchParams(canvasToSave);
+
+        let settings: string = JSON.stringify(_info);
+        let query: URLSearchParams = new URLSearchParams(settings);
+        
+        let response: Response = await fetch (url + "?savePicture&" + name + canvasQuery.toString() + "&" + query.toString());
+        await fetch(url + "?insertName&" + name);
+
+        let responseText: string = await response.text();
+        if (responseText != "") {
+            alert("Your picture " + name + " has been saved!")
+        } else {
+            alert("Opps, try again!");
+        }
         }
         
 

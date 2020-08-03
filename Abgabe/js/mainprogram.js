@@ -415,9 +415,30 @@ var dancefloor;
         sendData(info, _disconame);
     }
     function sendData(_info, _disconame) {
-        console.log("Daten gesendet");
-        console.log(_disconame);
-        console.log(_info);
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log("Daten gesendet");
+            console.log(_disconame);
+            console.log(_info);
+            let name = _disconame.replace(" ", "_");
+            let canvasSettings = [];
+            let width = Math.floor(dancefloor.crc0.canvas.width).toString();
+            let height = Math.floor(dancefloor.crc0.canvas.height).toString();
+            let background = dancefloor.crc0.getImageData.toString();
+            canvasSettings.push(width, height, background);
+            let canvasToSave = JSON.stringify(canvasSettings);
+            let canvasQuery = new URLSearchParams(canvasToSave);
+            let settings = JSON.stringify(_info);
+            let query = new URLSearchParams(settings);
+            let response = yield fetch(url + "?savePicture&" + name + canvasQuery.toString() + "&" + query.toString());
+            yield fetch(url + "?insertName&" + name);
+            let responseText = yield response.text();
+            if (responseText != "") {
+                alert("Your picture " + name + " has been saved!");
+            }
+            else {
+                alert("Opps, try again!");
+            }
+        });
     }
 })(dancefloor || (dancefloor = {}));
 //# sourceMappingURL=mainprogram.js.map
