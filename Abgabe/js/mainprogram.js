@@ -10,7 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 var dancefloor;
 (function (dancefloor) {
     // Link zur Heroku App
-    let url = "LINKZUHEROKU";
+    let url = "https://lockdown1dancefloor.herokuapp.com/";
     // Buttons und HTML Elemente Typzuweisung
     let mainCanvas;
     let dragDrop = false;
@@ -433,12 +433,13 @@ var dancefloor;
             yield fetch(url + "?insertName&" + name);
             let responseText = yield response.text();
             if (responseText != "") {
-                alert("Your picture " + name + " has been saved!");
+                alert("Gratulations! " + name + " has been saved!");
             }
             else {
                 alert("Opps, try again!");
             }
         });
     }
+    dancefloor.sendData = sendData;
 })(dancefloor || (dancefloor = {}));
 //# sourceMappingURL=mainprogram.js.map

@@ -1,7 +1,7 @@
 namespace dancefloor {
 
     // Link zur Heroku App
-    let url: string = "LINKZUHEROKU";
+    let url: string = "https://lockdown1dancefloor.herokuapp.com/";
 
     //export rendering Context
     export let crc0: CanvasRenderingContext2D;
@@ -204,6 +204,7 @@ namespace dancefloor {
                 crc0.fillStyle = "yellow";
 
                 crc0.fill();
+                
                 break;
 
             //dark
@@ -564,7 +565,7 @@ namespace dancefloor {
                 sendData(info, _disconame);
         }
 
-        async function sendData(_info: CanvasInformation[], _disconame: string): Promise<void> {
+  export async function sendData(_info: CanvasInformation[], _disconame: string): Promise<void> {
             console.log("Daten gesendet");
             
             console.log(_disconame)
@@ -589,7 +590,7 @@ namespace dancefloor {
 
         let responseText: string = await response.text();
         if (responseText != "") {
-            alert("Your picture " + name + " has been saved!")
+            alert("Gratulations! " + name + " has been saved!")
         } else {
             alert("Opps, try again!");
         }

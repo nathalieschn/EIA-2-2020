@@ -1,0 +1,14 @@
+{
+  "name": "abgabe",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node Server/Server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/mongodb": "^3.5.25"
+  }
+}
