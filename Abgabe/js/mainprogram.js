@@ -21,6 +21,8 @@ var dancefloor;
     let deleteConfetti;
     let deleteBall;
     let undoButton;
+    let list;
+    let inputTitle;
     let scale;
     let backgroundColor;
     let lightElement;
@@ -88,11 +90,16 @@ var dancefloor;
             canvasBackground(_event);
             setInterval(animate, 100);
             drawAnimationobjects();
+            getDiscos();
             //mainCanvas.addEventListener("dblclick", deleteSymbol);
             mainCanvas.addEventListener("mousedown", pickSymbol);
             mainCanvas.addEventListener("mouseup", placeSymbol);
             mainCanvas.addEventListener("mousemove", dragSymbol);
             canvasBase = dancefloor.crc0.getImageData(0, 0, mainCanvas.width, mainCanvas.height);
+            // Show Database Funktion
+            list = document.querySelector("datalist#savedDiscos");
+            inputTitle = document.querySelector("input#named");
+            inputTitle.addEventListener("change", loadedDisco);
         });
     }
     //Canvas Größe auswählen
@@ -394,6 +401,8 @@ var dancefloor;
             let form = {
                 "positionx": Math.floor(entry.position.x),
                 "positiony": Math.floor(entry.position.y),
+                "velocityx": Math.floor(entry.velocity.x),
+                "velocityy": Math.floor(entry.velocity.y),
             };
             info.push(form);
         }
@@ -401,6 +410,8 @@ var dancefloor;
             let form = {
                 "positionx": Math.floor(entry.position.x),
                 "positiony": Math.floor(entry.position.y),
+                "velocityx": Math.floor(entry.velocity.x),
+                "velocityy": Math.floor(entry.velocity.y),
             };
             info.push(form);
         }
@@ -408,6 +419,8 @@ var dancefloor;
             let form = {
                 "positionx": Math.floor(entry.position.x),
                 "positiony": Math.floor(entry.position.y),
+                "velocityx": Math.floor(entry.velocity.x),
+                "velocityy": Math.floor(entry.velocity.y),
             };
             info.push(form);
         }
@@ -440,6 +453,35 @@ var dancefloor;
             }
         });
     }
-    dancefloor.sendData = sendData;
+    function listDiscos(_response) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let data = _response.replace(/\\|\[|{|}|"|name|:|object|Object|]/g, "");
+            let dataArray = data.split(",");
+            while (list.firstChild) {
+                list.removeChild(list.firstChild);
+            }
+            for (let title of dataArray) {
+                if (title == "") {
+                }
+                else {
+                    let option = document.createElement("option");
+                    option.setAttribute("name", title);
+                    option.value = title;
+                    list.appendChild(option);
+                }
+            }
+        });
+    }
+    function getDiscos() {
+        return __awaiter(this, void 0, void 0, function* () {
+            let response = yield fetch(url + "?getDiscos&");
+            let texte = yield response.text();
+            listDiscos(texte);
+        });
+    }
+    function loadedDisco(_event) {
+        let value = inputTitle.value;
+        saveCanvas(value);
+    }
 })(dancefloor || (dancefloor = {}));
 //# sourceMappingURL=mainprogram.js.map

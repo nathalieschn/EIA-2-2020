@@ -19,6 +19,8 @@ namespace dancefloor {
     let deleteConfetti: HTMLDivElement;
     let deleteBall: HTMLDivElement;
     let undoButton: HTMLDivElement;
+    let list: HTMLDataListElement;
+    let inputTitle: HTMLInputElement;
 
     let scale: HTMLDivElement;
     let backgroundColor: HTMLDivElement;
@@ -105,6 +107,7 @@ namespace dancefloor {
         canvasBackground(_event);
         setInterval(animate, 100);
         drawAnimationobjects();
+        getDiscos();
 
         //mainCanvas.addEventListener("dblclick", deleteSymbol);
         mainCanvas.addEventListener("mousedown", pickSymbol);
@@ -113,6 +116,16 @@ namespace dancefloor {
 
 
         canvasBase = crc0.getImageData(0, 0, mainCanvas.width, mainCanvas.height);
+        // Show Database Funktion
+        list = <HTMLDataListElement>document.querySelector("datalist#savedDiscos");
+        inputTitle = <HTMLInputElement>document.querySelector("input#named");
+
+
+        inputTitle.addEventListener("change", loadedDisco);
+
+
+
+
 
 
     }
@@ -204,7 +217,7 @@ namespace dancefloor {
                 crc0.fillStyle = "yellow";
 
                 crc0.fill();
-                
+
                 break;
 
             //dark
@@ -460,9 +473,9 @@ namespace dancefloor {
 
         crc0.clearRect(0, 0, mainCanvas.width, mainCanvas.height);
         drawings = [];
-        Lightdrawings=[];
-        Confettidrawings=[];
-        Balldrawings=[];
+        Lightdrawings = [];
+        Confettidrawings = [];
+        Balldrawings = [];
 
     }
 
@@ -511,15 +524,16 @@ namespace dancefloor {
 
         positionx: number;
         positiony: number;
-       // velocity: Vector;
+        velocityx: number;
+        velocityy: number;
     }
 
-    function saveName(_event: Event): void  {
+    function saveName(_event: Event): void {
 
         let disconame: string;
 
-        disconame = prompt("Whats the name of your Disco?","Disconame");
-        if (disconame != null ){
+        disconame = prompt("Whats the name of your Disco?", "Disconame");
+        if (disconame != null) {
             saveCanvas(disconame);
         }
         else {
@@ -539,44 +553,51 @@ namespace dancefloor {
             let form: CanvasInformation = {
                 "positionx": Math.floor(entry.position.x),
                 "positiony": Math.floor(entry.position.y),
-               // "velocity": Math.floor(entry.velocity(Vector))
+                "velocityx": Math.floor(entry.velocity.x),
+                "velocityy": Math.floor(entry.velocity.y),
+
+                // "velocity": Math.floor(entry.velocity(Vector))
             }
             info.push(form)
         }
 
         for (let entry of Confettidrawings) {
-                let form: CanvasInformation = {
-                    "positionx": Math.floor(entry.position.x),
-                    "positiony": Math.floor(entry.position.y),
-                    //"velocity": Math.floor(entry.velocity(Vector))
-                }
-                info.push(form)
+            let form: CanvasInformation = {
+                "positionx": Math.floor(entry.position.x),
+                "positiony": Math.floor(entry.position.y),
+                "velocityx": Math.floor(entry.velocity.x),
+                "velocityy": Math.floor(entry.velocity.y),
+                //"velocity": Math.floor(entry.velocity(Vector))
             }
-
-                for (let entry of Balldrawings) {
-                    let form: CanvasInformation = {
-                        "positionx": Math.floor(entry.position.x),
-                        "positiony": Math.floor(entry.position.y),
-                       // "velocity": Math.floor(entry.velocity(Vector))
-                    }
-                    info.push(form)
-                }
-                console.log(info);
-                sendData(info, _disconame);
+            info.push(form)
         }
 
-  export async function sendData(_info: CanvasInformation[], _disconame: string): Promise<void> {
-            console.log("Daten gesendet");
-            
-            console.log(_disconame)
-            console.log(_info);
+        for (let entry of Balldrawings) {
+            let form: CanvasInformation = {
+                "positionx": Math.floor(entry.position.x),
+                "positiony": Math.floor(entry.position.y),
+                "velocityx": Math.floor(entry.velocity.x),
+                "velocityy": Math.floor(entry.velocity.y),
+                // "velocity": Math.floor(entry.velocity(Vector))
+            }
+            info.push(form)
+        }
+        console.log(info);
+        sendData(info, _disconame);
+    }
+
+    async function sendData(_info: CanvasInformation[], _disconame: string): Promise<void> {
+        console.log("Daten gesendet");
+
+        console.log(_disconame)
+        console.log(_info);
 
         let name: string = _disconame.replace(" ", "_");
         let canvasSettings: string[] = [];
         let width: string = Math.floor(crc0.canvas.width).toString();
         let height: string = Math.floor(crc0.canvas.height).toString();
         let background: string = crc0.getImageData.toString();
-        
+
         canvasSettings.push(width, height, background);
 
         let canvasToSave: string = JSON.stringify(canvasSettings);
@@ -584,8 +605,8 @@ namespace dancefloor {
 
         let settings: string = JSON.stringify(_info);
         let query: URLSearchParams = new URLSearchParams(settings);
-        
-        let response: Response = await fetch (url + "?savePicture&" + name + canvasQuery.toString() + "&" + query.toString());
+
+        let response: Response = await fetch(url + "?savePicture&" + name + canvasQuery.toString() + "&" + query.toString());
         await fetch(url + "?insertName&" + name);
 
         let responseText: string = await response.text();
@@ -594,7 +615,44 @@ namespace dancefloor {
         } else {
             alert("Opps, try again!");
         }
-        }
-        
+    }
+
+    async function listDiscos(_response: string): Promise<void> {
+        let data: string = _response.replace(/\\|\[|{|}|"|name|:|object|Object|]/g, "");
+        let dataArray: string[] = data.split(",");
+        while (list.firstChild) {
+            list.removeChild(list.firstChild);
 
         }
+        for (let title of dataArray) {
+            if (title == "") {
+
+
+            }
+
+
+            else {
+                let option: HTMLOptionElement = document.createElement("option");
+                option.setAttribute("name", title);
+                option.value = title;
+                list.appendChild(option);
+            }
+        }
+    }
+
+    async function getDiscos(): Promise<void> {
+        let response: Response = await fetch(url + "?getDiscos&");
+        let texte: string = await response.text();
+
+        listDiscos(texte);
+    }
+
+    function loadedDisco(_event: Event): void {
+        let value: string = inputTitle.value;
+        saveCanvas(value);
+
+
+
+    }
+
+}

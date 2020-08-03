@@ -2,26 +2,28 @@ import * as Http from "http";
 import * as Url from "url";
 import * as Mongo from "mongodb";
 
-export namespace dancefloor {
+namespace dancefloor {
+
 
     let server: Http.Server = Http.createServer();
     let saveCanvas: Mongo.Collection;
 
     let port: number | string | undefined = process.env.PORT;
-    if (port == undefined)
+    if (port == undefined) {
         port = 5001;
-    
-    let databaseUrl: string = "mongodb+srv://Nathalie_SCH:1234@eia2-nathalie-j7mxw.mongodb.net/Disco?retryWrites=true&w=majority";
+    }
+    else {
+        let databaseUrl: string = "mongodb+srv://Nathalie_SCH:1234@eia2-nathalie-j7mxw.mongodb.net/<dbname>?retryWrites=true&w=majority";
 
-    console.log("Server starting on port:" + port);
+        console.log("Server starting on port:" + port);
 
-    server.listen(port);
-    server.addListener("request", handleRequest);
-    connectDatabase(databaseUrl);
-
+        server.listen(port);
+        server.addListener("request", handleRequest);
+        connectDatabase(databaseUrl);
+    }
     async function connectDatabase(_url: string): Promise<void> {
-        let options: Mongo.MongoClientOptions = {useNewUrlParser: true, useUnifiedTopology: true};
-        let mongoCLient: Mongo.MongoClient = new Mongo.MongoClient (_url, options);
+        let options: Mongo.MongoClientOptions = { useNewUrlParser: true, useUnifiedTopology: true };
+        let mongoCLient: Mongo.MongoClient = new Mongo.MongoClient(_url, options);
         await mongoCLient.connect();
         saveCanvas = mongoCLient.db("Disco").collection("SavedDiscos");
     }

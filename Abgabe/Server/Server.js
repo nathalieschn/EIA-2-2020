@@ -17,13 +17,16 @@ var dancefloor;
     let server = Http.createServer();
     let saveCanvas;
     let port = process.env.PORT;
-    if (port == undefined)
+    if (port == undefined) {
         port = 5001;
-    let databaseUrl = "mongodb+srv://Nathalie_SCH:1234@eia2-nathalie-j7mxw.mongodb.net/Disco?retryWrites=true&w=majority";
-    console.log("Server starting on port:" + port);
-    server.listen(port);
-    server.addListener("request", handleRequest);
-    connectDatabase(databaseUrl);
+    }
+    else {
+        let databaseUrl = "mongodb+srv://Nathalie_SCH:1234@eia2-nathalie-j7mxw.mongodb.net/<dbname>?retryWrites=true&w=majority";
+        console.log("Server starting on port:" + port);
+        server.listen(port);
+        server.addListener("request", handleRequest);
+        connectDatabase(databaseUrl);
+    }
     function connectDatabase(_url) {
         return __awaiter(this, void 0, void 0, function* () {
             let options = { useNewUrlParser: true, useUnifiedTopology: true };
@@ -49,5 +52,5 @@ var dancefloor;
     function storeData(_info) {
         saveCanvas.insert(_info);
     }
-})(dancefloor = exports.dancefloor || (exports.dancefloor = {}));
+})(dancefloor || (dancefloor = {}));
 //# sourceMappingURL=Server.js.map

@@ -4,25 +4,25 @@ namespace dancefloor {
     export abstract class Animationobject {
 
         public position: Vector;
-        public rotation: number; 
-        public radius: number;   
+        public rotation: number;
+        public radius: number;
         public velocity: Vector;
 
         constructor(_position?: Vector) {
 
             // console.log("Moveable");
             if (_position)
-            this.position = _position.copy();
-            else 
-            this.velocity = new Vector(0, 0);
+                this.position = _position.copy();
+            else
+                this.velocity = new Vector(0, 0);
 
             this.radius = 20;
             this.velocity = new Vector(0, 0);
-            this.rotation = 0; 
-            
+            this.rotation = 0;
+
         }
 
-        public  abstract draw(_crc: CanvasRenderingContext2D): void;
+        public abstract draw(_crc: CanvasRenderingContext2D): void;
 
         public move(_timeslice: number): void {
 
@@ -43,7 +43,7 @@ namespace dancefloor {
 
         }
 
-  
+
     }
 }
 

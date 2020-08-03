@@ -1,14 +1,15 @@
 {
   "name": "abgabe",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Dancefloor",
+  "main": "",
   "scripts": {
-    "start": "node Server/Server.js"
+    "start": "node Server/Server.js remote"
   },
-  "author": "",
+  "author": "Nathalie Schneider",
   "license": "ISC",
   "dependencies": {
-    "@types/mongodb": "^3.5.25"
+    "@types/mongodb": "^3.5.25",
+    "mongodb": "^3.6.0"
   }
 }
