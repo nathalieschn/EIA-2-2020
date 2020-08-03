@@ -78,7 +78,7 @@ var dancefloor;
             changeConfettiAnimation.addEventListener("change", changeAnimationConfetti);
             changeBallAnimation.addEventListener("change", changeAnimationBalls);
             // Delete/ Save Event-Listener
-            saveButton.addEventListener("click", saveImage);
+            saveButton.addEventListener("click", saveName);
             deleteButton.addEventListener("click", clearCanvas);
             deleteLight.addEventListener("click", deleteLights);
             deleteConfetti.addEventListener("click", deleteConfettis);
@@ -343,6 +343,9 @@ var dancefloor;
     function clearCanvas() {
         dancefloor.crc0.clearRect(0, 0, mainCanvas.width, mainCanvas.height);
         drawings = [];
+        Lightdrawings = [];
+        Confettidrawings = [];
+        Balldrawings = [];
     }
     function deleteLights(_event) {
         console.log("Delete deleteLights verknüpft");
@@ -373,13 +376,48 @@ var dancefloor;
         console.log("undo");
         drawings.splice(drawings.length - 1);
     }
-    function saveImage(_event) {
-        return __awaiter(this, void 0, void 0, function* () {
-            console.log("savebutton gedrückt");
-            let discoName = prompt("Wie heißt Deine Disco?");
-        });
+    function saveName(_event) {
+        let disconame;
+        disconame = prompt("Whats the name of your Disco?", "Disconame");
+        if (disconame != null) {
+            saveCanvas(disconame);
+        }
+        else {
+            return;
+        }
     }
-    function savePic() {
+    function saveCanvas(_disconame) {
+        console.log("saveCanvas verbunden");
+        let info = [];
+        info.push();
+        for (let entry of Lightdrawings) {
+            let form = {
+                "positionx": Math.floor(entry.position.x),
+                "positiony": Math.floor(entry.position.y),
+            };
+            info.push(form);
+        }
+        for (let entry of Confettidrawings) {
+            let form = {
+                "positionx": Math.floor(entry.position.x),
+                "positiony": Math.floor(entry.position.y),
+            };
+            info.push(form);
+        }
+        for (let entry of Balldrawings) {
+            let form = {
+                "positionx": Math.floor(entry.position.x),
+                "positiony": Math.floor(entry.position.y),
+            };
+            info.push(form);
+        }
+        console.log(info);
+        sendData(info, _disconame);
+    }
+    function sendData(_info, _disconame) {
+        console.log("Daten gesendet");
+        console.log(_disconame);
+        console.log(_info);
     }
 })(dancefloor || (dancefloor = {}));
 //# sourceMappingURL=mainprogram.js.map
