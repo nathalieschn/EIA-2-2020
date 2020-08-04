@@ -2,9 +2,9 @@
   "name": "abgabe",
   "version": "1.0.0",
   "description": "Dancefloor",
-  "main": "Server.js",
+  "main": "Abgabe/Server/Server.js",
   "scripts": {
-    "start": "node Server/Server.js remote"
+    "start": "node Abgabe/Server/Server.js remote"
   },
   "author": "Nathalie Schneider",
   "license": "ISC",
